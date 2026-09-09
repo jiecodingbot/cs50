@@ -74,26 +74,51 @@ Loops run only while a pair is on screen, and stop entirely under
 
 ## Design
 
-Minimalist and monochrome. No accent colour anywhere.
+Card led and monochrome, closer to a modern product store than to a document.
+No accent colour anywhere.
 
 ```
---paper    #F2F1ED   bone
---ink      #101010   text
---ink-deep #0A0A0A   mastheads, early access block, footer
---muted    #6F6D68   secondary text
---faint    #78766F   mono labels
---rule     #DCDAD4   hairlines
+--paper     #F2F1ED   bone page
+--surface   #FFFFFF   cards
+--surface-2 #E9E8E3   artwork panels inside cards
+--ink       #0E0E0E   text
+--ink-deep  #0A0A0A   hero, mastheads, early access, footer
+--muted     #6B6963   secondary text
+--rule      #DCDAD4   hairlines
 ```
 
-Instrument Sans for everything, IBM Plex Mono for labels, indices and counts.
+Instrument Sans for everything, IBM Plex Mono for small labels and counts.
 
-Built from hairlines and whitespace. No cards, no shadows, no borders around
-content. Hierarchy comes from scale: feature names run up to 10.5rem in
-uppercase, section headings sit at about a third of that, everything else is one
-body size.
+The home screen is a hook and nothing more: one headline, one line, two buttons,
+five icon tiles, then a card grid. Each card is a link into that feature's full
+write up on `#five`. All the long copy lives behind those clicks, deliberately.
 
-Every screen opens on a dark masthead and the nav flips from dark to bone once
-you scroll past it. Verified at 390px and 1440px with no horizontal overflow.
+**Artwork.** Every card, every feature detail and every workflow pane carries a
+drawn SVG illustration. They are line drawings in the brand palette, built from
+the same shapes the product actually produces. There are no photographs and no
+stock imagery anywhere.
+
+**Icons** live once as `<symbol>` elements at the top of the body and are
+referenced with `<use href="#i-details">`. Add an icon by adding a symbol.
+
+Every screen opens dark and the nav flips from dark to bone once you scroll past
+it. Verified at 390px and 1440px with no horizontal overflow.
+
+### Swapping in real product images
+
+The illustrations are placeholders in the sense that a real screenshot would sell
+harder. Three places are worth replacing once there is product to photograph:
+
+| Where | What to send |
+|---|---|
+| Details card and detail artwork | A real deck, eight sections, with figures showing |
+| Interest artwork | The real engagement view for one client |
+| Vision artwork | One empty room and the same room furnished, side by side |
+
+To swap: replace the `<svg>` inside `.card-art`, `.panel-art` or `.stage` with an
+`<img>` or `<video autoplay muted loop playsinline>`. The containers already hold
+their aspect ratio, so nothing else needs to change. Keep any real screenshot
+free of a real client's name and free of figures that are not genuinely sourced.
 
 ## Open slots
 

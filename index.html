@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BASIS</title>
-<meta name="description" content="BASIS handles the preparation behind property agency in Singapore. Details, interest, retention, vision, order.">
+<meta name="description" content="BASIS does the preparation behind property agency in Singapore. Details, interest, retention, vision, order.">
 <meta property="og:title" content="BASIS">
 <meta property="og:description" content="You're good with people. Machines are good with numbers. So stop doing both.">
 <meta property="og:type" content="website">
@@ -12,504 +12,481 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   BASIS. Shared stylesheet.
-   Monochrome, hairlines, whitespace. No accent colour.
-   ============================================================ */
-
 :root{
   --paper:#F2F1ED;
-  --white:#FBFBFA;
-  --ink:#101010;
+  --surface:#FFFFFF;
+  --surface-2:#E9E8E3;
+  --surface-3:#DEDCD6;
+  --ink:#0E0E0E;
   --ink-deep:#0A0A0A;
-  --muted:#6F6D68;
-  --faint:#78766F;
+  --muted:#6B6963;
+  --faint:#8A8781;
   --rule:#DCDAD4;
   --rule-soft:#E6E4DF;
   --on-ink:#EDEBE6;
-  --on-ink-muted:#93918B;
-  --on-ink-rule:#262626;
+  --on-ink-muted:#9B9993;
+  --on-ink-rule:#242424;
 
   --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
 
-  --gut:clamp(22px,6vw,88px);
-  --wide:1340px;
-  --nav-h:70px;
+  --gut:clamp(20px,5vw,64px);
+  --wide:1240px;
+  --nav-h:64px;
+  --r:20px;
+  --r-lg:28px;
+  --r-sm:12px;
 }
 
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
 body{
   margin:0;background:var(--paper);color:var(--ink);
-  font-family:var(--sans);font-size:17px;line-height:1.58;
-  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-family:var(--sans);font-size:17px;line-height:1.5;
+  -webkit-font-smoothing:antialiased;
 }
-a{color:inherit;}
+a{color:inherit;text-decoration:none;}
 img,svg{max-width:100%;}
-:focus-visible{outline:1px solid currentColor;outline-offset:4px;}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:4px;}
 .wrap{max-width:var(--wide);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut);}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
-
 .label{
   font-family:var(--mono);font-size:.6875rem;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint);margin:0;
 }
-.on-dark .label,.masthead .label{color:var(--on-ink-muted);}
 
-/* ---------------- nav ---------------- */
+/* ---------- nav ---------- */
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:70;height:var(--nav-h);
-  transition:background .35s ease,color .35s ease,border-color .35s ease;
+  position:fixed;top:0;left:0;right:0;z-index:80;height:var(--nav-h);
+  transition:background .3s,color .3s,border-color .3s;
   border-bottom:1px solid transparent;
 }
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:24px;}
-.mark{font-size:.8125rem;font-weight:500;letter-spacing:.34em;text-decoration:none;text-transform:uppercase;}
-.nav-links{
-  display:none;gap:34px;
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
-}
-.nav-links a{text-decoration:none;opacity:.6;transition:opacity .25s;}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:20px;}
+.mark{font-size:.8125rem;font-weight:600;letter-spacing:.3em;text-transform:uppercase;}
+.nav-links{display:none;gap:32px;font-size:.8125rem;}
+.nav-links a{opacity:.62;transition:opacity .2s;}
 .nav-links a:hover,.nav-links a[aria-current="page"]{opacity:1;}
 .nav-cta{
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
-  text-decoration:none;padding-bottom:4px;border-bottom:1px solid currentColor;white-space:nowrap;
+  font-size:.8125rem;font-weight:500;padding:8px 16px;border-radius:100px;
+  background:var(--ink);color:var(--paper);transition:opacity .2s;white-space:nowrap;
 }
-@media(min-width:940px){.nav-links{display:flex;}}
+.nav-cta:hover{opacity:.82;}
+@media(min-width:880px){.nav-links{display:flex;}}
 .nav[data-mode="dark"]{color:var(--on-ink);}
-.nav[data-mode="dark"].stuck{background:rgba(10,10,10,.9);backdrop-filter:blur(14px);border-bottom-color:var(--on-ink-rule);}
-.nav[data-mode="light"]{color:var(--ink);background:rgba(242,241,237,.9);backdrop-filter:blur(14px);border-bottom-color:var(--rule);}
+.nav[data-mode="dark"] .nav-cta{background:var(--on-ink);color:var(--ink-deep);}
+.nav[data-mode="dark"].stuck{background:rgba(10,10,10,.78);backdrop-filter:saturate(160%) blur(16px);border-bottom-color:var(--on-ink-rule);}
+.nav[data-mode="light"]{color:var(--ink);background:rgba(242,241,237,.78);backdrop-filter:saturate(160%) blur(16px);border-bottom-color:var(--rule);}
 
-/* ---------------- masthead ---------------- */
-.masthead{
+/* ---------- hero ---------- */
+.hero{
   background:var(--ink-deep);color:var(--on-ink);
-  padding:calc(var(--nav-h) + clamp(58px,8vw,96px)) 0 clamp(52px,7vw,86px);
+  padding:calc(var(--nav-h) + clamp(58px,10vw,116px)) 0 clamp(40px,5vw,60px);
+  text-align:center;
 }
-.masthead.tall{
-  padding:calc(var(--nav-h) + clamp(58px,9vw,104px)) 0 clamp(48px,7vw,76px);
-  min-height:min(100svh,960px);display:flex;align-items:center;
+.hero .label{color:var(--on-ink-muted);margin-bottom:clamp(20px,3vw,30px);}
+h1{
+  font-size:clamp(2.05rem,4.9vw,4.05rem);
+  line-height:1.04;letter-spacing:-.042em;font-weight:600;
+  margin:0 auto;max-width:21ch;
 }
-.masthead-in{width:100%;}
-.masthead h1{
-  font-size:clamp(2.2rem,5vw,4.4rem);
-  line-height:1;letter-spacing:-.042em;font-weight:500;
-  margin:clamp(24px,3.4vw,40px) 0 0;max-width:19ch;
+h1 .dim{color:#6E6D68;}
+.hero-sub{
+  font-size:clamp(1.25rem,2.6vw,1.875rem);letter-spacing:-.03em;font-weight:500;
+  margin:clamp(20px,3vw,30px) auto 0;color:#fff;
 }
-.masthead h1 .dim{color:#6A6964;}
-.masthead .stand{
-  font-size:clamp(1.0625rem,1.6vw,1.25rem);color:#9A9893;
-  margin:clamp(20px,2.6vw,28px) 0 0;max-width:56ch;
+.hero-acts{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:clamp(30px,4vw,44px);}
+.btn{
+  display:inline-block;font-size:1rem;font-weight:500;
+  padding:13px 26px;border-radius:100px;border:1px solid transparent;
+  background:var(--on-ink);color:var(--ink-deep);
+  transition:opacity .2s,transform .2s,background .2s,color .2s;
 }
-.stop{
-  font-size:clamp(1.1875rem,2.2vw,1.625rem);
-  line-height:1.15;letter-spacing:-.03em;font-weight:400;
-  margin:clamp(18px,2.4vw,26px) 0 0;color:var(--on-ink);
-}
-.banner-grid{
-  display:grid;gap:clamp(34px,5vw,60px);
-  margin-top:clamp(38px,4.6vw,58px);
-  padding-top:clamp(28px,3.4vw,38px);
-  border-top:1px solid var(--on-ink-rule);
-}
-@media(min-width:900px){.banner-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(48px,7vw,110px);}}
-.banner-side{display:flex;flex-direction:column;gap:clamp(30px,4vw,46px);}
-.hook p{margin:0 0 16px;color:#9A9893;font-size:1.0625rem;line-height:1.62;max-width:58ch;}
-.hook p:last-child{margin-bottom:0;}
-.hook .lift{color:var(--on-ink);}
-.hook .close{margin-top:26px;color:#fff;font-size:1.25rem;letter-spacing:-.02em;}
-.hook .close b{font-weight:500;letter-spacing:.2em;}
-.acts{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;}
-.link-cta{
-  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
-  text-decoration:none;padding-bottom:6px;border-bottom:1px solid currentColor;
-  transition:opacity .25s;display:inline-block;
-}
-.link-cta:hover{opacity:.6;}
-.link-cta.quiet{color:var(--on-ink-muted);}
-.src{display:flex;flex-wrap:wrap;gap:8px 22px;font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;color:#7C7A74;}
-.src b{font-weight:400;color:var(--on-ink-muted);letter-spacing:.14em;text-transform:uppercase;}
+.btn:hover{opacity:.85;}
+.btn.ghost{background:transparent;color:var(--on-ink);border-color:#3A3A3A;}
+.btn.ghost:hover{border-color:var(--on-ink);opacity:1;}
+.btn.dark{background:var(--ink);color:var(--paper);}
+.btn.dark:hover{opacity:.85;}
+.btn.plain{background:transparent;color:var(--ink);border-color:var(--rule);}
+.btn.plain:hover{border-color:var(--ink);}
 
-/* ---------------- sections ---------------- */
-.sec{padding:clamp(72px,11vw,150px) 0;}
-.sec.tight{padding:clamp(56px,8vw,104px) 0;}
-.sec-head{display:grid;gap:clamp(26px,4vw,52px);}
-@media(min-width:900px){.sec-head{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(48px,7vw,110px);}}
-h2{
-  font-size:clamp(1.9rem,4.4vw,3.35rem);
-  line-height:1.02;letter-spacing:-.04em;font-weight:500;
-  margin:20px 0 0;max-width:18ch;
+/* ---------- quick tiles ---------- */
+.quick{
+  background:var(--ink-deep);padding:clamp(10px,2vw,22px) 0 clamp(44px,6vw,68px);
 }
-.sec-head h2{margin-top:0;}
-.body{font-size:1.0625rem;color:var(--muted);max-width:58ch;margin:0;}
-.body + .body{margin-top:18px;}
-.body.first{margin-top:32px;}
-.body b{color:var(--ink);font-weight:500;}
-.on-dark .body{color:#9A9893;}
-.note{font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;color:var(--faint);margin:16px 0 0;line-height:1.7;}
+.quick-row{
+  display:flex;gap:clamp(14px,2.4vw,30px);justify-content:flex-start;
+  overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;
+  -ms-overflow-style:none;scrollbar-width:none;
+}
+.quick-row::-webkit-scrollbar{display:none;}
+@media(min-width:820px){.quick-row{justify-content:center;overflow:visible;}}
+.quick-tile{
+  flex:none;width:104px;scroll-snap-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+  color:var(--on-ink-muted);transition:color .2s;
+}
+.quick-tile:hover{color:var(--on-ink);}
+.quick-ico{
+  width:76px;height:76px;border-radius:50%;
+  background:#141414;border:1px solid #232323;
+  display:grid;place-items:center;transition:background .25s,transform .25s,border-color .25s;
+}
+.quick-tile:hover .quick-ico{background:#1C1C1C;border-color:#3A3A3A;transform:translateY(-3px);}
+.quick-ico svg{width:30px;height:30px;stroke:var(--on-ink);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;}
+.quick-tile span{font-size:.8125rem;letter-spacing:-.01em;}
 
-.tenets{margin-top:clamp(56px,8vw,104px);display:grid;border-top:1px solid var(--rule);}
-@media(min-width:820px){.tenets{grid-template-columns:repeat(3,1fr);}}
-.tenet{padding:26px 0 30px;border-bottom:1px solid var(--rule);}
-@media(min-width:820px){
-  .tenet{border-bottom:0;padding:30px 34px 8px 0;}
-  .tenet + .tenet{border-left:1px solid var(--rule);padding-left:34px;}
+/* ---------- section shell ---------- */
+.sec{padding:clamp(56px,8vw,104px) 0;}
+.sec-title{
+  font-size:clamp(1.65rem,3.6vw,2.6rem);
+  line-height:1.06;letter-spacing:-.035em;font-weight:600;margin:0;
 }
-.tenet h3{margin:12px 0 0;font-size:1.0625rem;font-weight:500;letter-spacing:-.01em;}
-.tenet p{margin:8px 0 0;color:var(--muted);font-size:.9375rem;max-width:40ch;}
+.sec-top{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  gap:16px 24px;flex-wrap:wrap;margin-bottom:clamp(24px,3.4vw,40px);
+}
+.sec-top p.sub{margin:10px 0 0;color:var(--muted);font-size:1.0625rem;max-width:44ch;}
+.more{
+  font-size:.9375rem;font-weight:500;white-space:nowrap;
+  display:inline-flex;align-items:center;gap:7px;
+}
+.more::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);transition:transform .2s;}
+.more:hover::after{transform:rotate(-45deg) translate(2px,2px);}
 
-.bar{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:22px 0;border-bottom:1px solid var(--rule);}
-.bar.top{border-bottom:0;border-top:1px solid var(--rule);}
+/* ---------- cards ---------- */
+.cards{display:grid;gap:clamp(14px,1.8vw,20px);}
+@media(min-width:720px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1040px){
+  .cards{grid-template-columns:repeat(6,1fr);}
+  .card{grid-column:span 2;}
+  .card.wide{grid-column:span 3;}
+}
+.card{
+  background:var(--surface);border-radius:var(--r-lg);overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgba(10,10,10,.35);}
+.card-art{
+  background:var(--surface-2);aspect-ratio:16/10;position:relative;overflow:hidden;
+}
+.card-art svg{position:absolute;inset:0;width:100%;height:100%;transition:transform .5s cubic-bezier(.2,.7,.2,1);}
+.card:hover .card-art svg{transform:scale(1.035);}
+.card-body{padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;flex:1;gap:8px;}
+.card-meta{display:flex;align-items:center;gap:10px;}
+.card-ico{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none;}
+.card-state{
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);margin-left:auto;
+}
+.card h3{margin:0;font-size:clamp(1.375rem,2.2vw,1.75rem);letter-spacing:-.03em;font-weight:600;}
+.card p{margin:0;color:var(--muted);font-size:1rem;flex:1;}
+.card .more{margin-top:14px;}
 
-/* ---------------- the five, brief (home) ---------------- */
-.five{margin-top:0;}
-.five-row{
-  display:grid;grid-template-columns:1fr;gap:10px;
-  padding:clamp(26px,3.4vw,40px) 0;border-bottom:1px solid var(--rule);
-  text-decoration:none;position:relative;
-  transition:padding-left .35s cubic-bezier(.2,.7,.2,1);
+/* dark promo card */
+.promo{
+  margin-top:clamp(14px,1.8vw,20px);
+  background:var(--ink-deep);color:var(--on-ink);border-radius:var(--r-lg);
+  overflow:hidden;display:grid;gap:0;
 }
-@media(min-width:860px){
-  .five-row{grid-template-columns:4rem minmax(0,7.5fr) minmax(0,9fr) 6rem;gap:36px;align-items:baseline;}
-  .five-row:hover{padding-left:14px;}
-}
-.five-row:hover .five-name{opacity:.55;}
-.five-n{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;color:var(--faint);}
-.five-name{
-  font-size:clamp(1.75rem,4vw,2.75rem);line-height:1;letter-spacing:-.04em;
-  font-weight:500;text-transform:uppercase;margin:0;transition:opacity .3s;
-}
-.five-line{margin:0;color:var(--muted);font-size:1rem;max-width:46ch;}
-.five-go{
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);white-space:nowrap;
-}
-@media(min-width:860px){.five-go{text-align:right;}}
-.five-row[data-state="build"] .five-go::before{content:"In build / ";}
-.five-row[data-state="live"] .five-go::before{content:"Live / ";}
+@media(min-width:860px){.promo{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);align-items:center;}}
+.promo-txt{padding:clamp(28px,4vw,52px);}
+.promo h3{margin:0;font-size:clamp(1.6rem,3.2vw,2.4rem);letter-spacing:-.035em;font-weight:600;color:#fff;max-width:16ch;}
+.promo p{margin:14px 0 0;color:#9B9993;font-size:1.0625rem;max-width:40ch;}
+.promo .btn{margin-top:26px;}
+.promo-art{padding:clamp(20px,3vw,40px);}
+.promo-art svg{width:100%;height:auto;display:block;}
 
-/* ---------------- callout ---------------- */
-.callout{background:var(--ink-deep);color:var(--on-ink);}
-.callout .inner{
-  display:grid;gap:clamp(28px,4vw,56px);align-items:end;
-  padding:clamp(56px,8vw,110px) 0;
+/* ---------- strip ---------- */
+.strip{
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  padding:clamp(26px,3.4vw,40px) 0;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;
+  gap:14px clamp(22px,4vw,52px);text-align:center;
 }
-@media(min-width:900px){.callout .inner{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);}}
-.callout h2{color:#fff;max-width:16ch;}
-.callout .body{color:#9A9893;}
+.strip b{font-weight:500;font-size:.9375rem;}
+.strip span{font-family:var(--mono);font-size:.8125rem;letter-spacing:.1em;color:var(--muted);}
 
-/* ---------------- feature entries ---------------- */
-.entry{padding:clamp(60px,9vw,120px) 0 clamp(52px,8vw,104px);border-bottom:1px solid var(--rule);}
-.entry:target{scroll-margin-top:var(--nav-h);}
-.entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;}
-.entry-name{
-  font-size:clamp(3rem,12.5vw,10.5rem);line-height:.86;letter-spacing:-.055em;
-  font-weight:500;margin:clamp(18px,2.6vw,34px) 0 0;text-transform:uppercase;
+/* ---------- masthead for inner views ---------- */
+.masthead{
+  background:var(--ink-deep);color:var(--on-ink);text-align:center;
+  padding:calc(var(--nav-h) + clamp(58px,8vw,96px)) 0 clamp(48px,7vw,80px);
 }
-.entry-line{
-  font-size:clamp(1.25rem,2.7vw,2rem);line-height:1.14;letter-spacing:-.03em;
-  font-weight:400;margin:clamp(22px,3vw,40px) 0 0;max-width:22ch;
+.masthead .label{color:var(--on-ink-muted);}
+.masthead h2{
+  font-size:clamp(2rem,5vw,3.75rem);line-height:1.03;letter-spacing:-.042em;
+  font-weight:600;margin:clamp(18px,2.6vw,28px) auto 0;max-width:18ch;color:#fff;
 }
-.entry-grid{display:grid;gap:clamp(30px,4vw,56px);margin-top:clamp(30px,4vw,54px);}
-@media(min-width:900px){.entry-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(48px,7vw,110px);}}
+.masthead h2 .dim{color:#6E6D68;}
+.masthead .stand{margin:clamp(18px,2.4vw,26px) auto 0;color:#9B9993;max-width:56ch;font-size:1.0625rem;}
+.masthead .hero-acts{margin-top:clamp(26px,3.4vw,38px);}
 
-.spec{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);}
-.spec li{display:grid;grid-template-columns:2.6rem 1fr;gap:6px 14px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--rule-soft);}
-.spec .n{font-family:var(--mono);font-size:.6875rem;color:var(--faint);letter-spacing:.1em;}
-.spec .t{font-size:.9375rem;}
-.spec .d{grid-column:2;color:var(--muted);font-size:.875rem;margin:0;}
-.spec .fig{grid-column:2;font-family:var(--mono);font-size:.75rem;color:var(--ink);font-variant-numeric:tabular-nums;}
-.spec .fig:empty{display:none;}
-.spec.plain li{grid-template-columns:1fr;}
-.spec.plain .t{font-size:1rem;}
-.spec.plain .d{grid-column:1;}
+/* ---------- feature detail ---------- */
+.detail{padding:clamp(48px,7vw,92px) 0;border-bottom:1px solid var(--rule);}
+.detail:target{scroll-margin-top:var(--nav-h);}
+.detail-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
+.detail-ico{width:26px;height:26px;stroke:var(--ink);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+.detail h2{
+  font-size:clamp(2.5rem,8vw,6rem);line-height:.94;letter-spacing:-.05em;
+  font-weight:600;margin:clamp(16px,2.4vw,26px) 0 0;text-transform:uppercase;
+}
+.detail .lead{
+  font-size:clamp(1.25rem,2.6vw,1.875rem);line-height:1.14;letter-spacing:-.03em;
+  margin:0;max-width:22ch;font-weight:500;
+}
+.detail-copy{display:grid;gap:clamp(18px,2.4vw,32px);margin-top:clamp(20px,2.6vw,32px);align-items:start;}
+@media(min-width:860px){.detail-copy{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(40px,6vw,90px);}}
+.detail-visual{margin-top:clamp(28px,3.6vw,48px);}
+.detail p.body{margin:0;color:var(--muted);font-size:1.0625rem;max-width:52ch;}
+.detail p.body + p.body{margin-top:14px;}
+.detail p.body b{color:var(--ink);font-weight:600;}
+.note{font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;color:var(--faint);margin:16px 0 0;line-height:1.7;}
+
+.panel{background:var(--surface);border-radius:var(--r);overflow:hidden;}
+.panel-art{background:var(--surface-2);aspect-ratio:16/10;position:relative;}
+.detail-visual .panel-art{aspect-ratio:20/7;}
+@media(max-width:700px){.detail-visual .panel-art{aspect-ratio:16/11;}}
+.panel-art svg{position:absolute;inset:0;width:100%;height:100%;}
+.panel-list{list-style:none;margin:0;padding:6px 0;}
+@media(min-width:760px){.panel-list{display:grid;grid-template-columns:1fr 1fr;column-gap:0;padding:0;}
+.panel-list li:nth-child(2){border-top:0;}
+.panel-list li:nth-child(odd){border-right:1px solid var(--rule-soft);}}
+.panel-list li{
+  display:grid;grid-template-columns:2.4rem 1fr;gap:4px 12px;align-items:baseline;
+  padding:12px clamp(18px,2.2vw,24px);border-top:1px solid var(--rule-soft);
+}
+.panel-list li:first-child{border-top:0;}
+.panel-list .n{font-family:var(--mono);font-size:.6875rem;color:var(--faint);}
+.panel-list .t{font-size:.9375rem;font-weight:500;}
+.panel-list .d{grid-column:2;color:var(--muted);font-size:.875rem;margin:0;}
+.panel-list .fig{grid-column:2;font-family:var(--mono);font-size:.75rem;}
+.panel-list .fig:empty{display:none;}
 
 /* readout */
-.readout{border-top:1px solid var(--rule);}
-.rrow{display:grid;grid-template-columns:1fr;gap:7px;padding:13px 0;border-bottom:1px solid var(--rule-soft);}
-@media(min-width:560px){.rrow{grid-template-columns:14ch 1fr 8ch;gap:18px;align-items:center;}}
+.readout{background:var(--surface);border-radius:var(--r);padding:clamp(18px,2.2vw,26px);}
+.readout-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--rule-soft);}
+.rrow{display:grid;grid-template-columns:1fr;gap:6px;padding:11px 0;border-bottom:1px solid var(--rule-soft);}
+@media(min-width:520px){.rrow{grid-template-columns:13ch 1fr 8ch;gap:16px;align-items:center;}}
 .rname{font-size:.9375rem;color:var(--muted);}
-.rtrack{height:1px;background:var(--rule);position:relative;}
-.rfill{position:absolute;left:0;top:-1px;height:3px;width:0;background:var(--ink);transition:width 1.1s cubic-bezier(.22,.75,.2,1);}
-.rcount{font-family:var(--mono);font-size:.75rem;color:var(--faint);letter-spacing:.06em;}
-@media(min-width:560px){.rcount{text-align:right;}}
+.rtrack{height:4px;background:var(--surface-3);border-radius:100px;position:relative;overflow:hidden;}
+.rfill{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink);border-radius:100px;transition:width 1.1s cubic-bezier(.22,.75,.2,1);}
+.rcount{font-family:var(--mono);font-size:.75rem;color:var(--faint);}
+@media(min-width:520px){.rcount{text-align:right;}}
 .readout.played .rfill{width:var(--w);}
-.rrow.key .rname,.rrow.key .rcount{color:var(--ink);}
+.rrow.key .rname,.rrow.key .rcount{color:var(--ink);font-weight:500;}
 .rrow:last-of-type{border-bottom:0;}
-.verdict{border-top:1px solid var(--rule);padding-top:22px;opacity:0;transform:translateY(5px);transition:opacity .6s .85s ease,transform .6s .85s ease;}
+.verdict{padding-top:18px;border-top:1px solid var(--rule-soft);opacity:0;transform:translateY(5px);transition:opacity .6s .85s,transform .6s .85s;}
 .readout.played .verdict{opacity:1;transform:none;}
-.verdict p{margin:0;font-size:1.0625rem;line-height:1.5;max-width:44ch;}
-.verdict .sub{margin-top:8px;color:var(--muted);font-size:.875rem;font-family:var(--mono);}
+.verdict p{margin:0;font-size:1rem;max-width:44ch;}
+.verdict .sub{margin-top:8px;color:var(--muted);font-size:.8125rem;font-family:var(--mono);}
 .play{
-  font:inherit;font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
-  background:none;border:0;border-bottom:1px solid var(--rule);color:var(--muted);
-  padding:0 0 4px;cursor:pointer;transition:color .25s,border-color .25s;
+  font:inherit;font-family:var(--mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--surface-2);border:0;color:var(--muted);padding:7px 13px;border-radius:100px;cursor:pointer;
 }
-.play:hover{color:var(--ink);border-color:var(--ink);}
-.readout.played .play{opacity:.4;}
+.play:hover{color:var(--ink);}
+.readout.played .play{opacity:.45;}
 
-/* ---------------- workflow comparison ---------------- */
-.compare{padding:clamp(56px,8vw,110px) 0;border-bottom:1px solid var(--rule);}
+.ticks{list-style:none;margin:0;padding:0;}
+@media(min-width:760px){.ticks{display:grid;grid-template-columns:repeat(3,1fr);gap:0 clamp(24px,3vw,44px);}
+.ticks li{border-top:1px solid var(--rule);}}
+.ticks li{
+  display:grid;grid-template-columns:22px 1fr;gap:4px 12px;align-items:start;
+  padding:14px 0;border-top:1px solid var(--rule);
+}
+.ticks li:first-child{border-top:0;}
+.ticks svg{width:18px;height:18px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-top:3px;}
+.ticks .t{font-size:1rem;font-weight:500;}
+.ticks .d{grid-column:2;margin:4px 0 0;color:var(--muted);font-size:.9375rem;}
+
+/* ---------- workflow ---------- */
+.compare{padding:clamp(44px,6vw,84px) 0;border-bottom:1px solid var(--rule);}
 .compare:target{scroll-margin-top:var(--nav-h);}
-.compare-head{display:flex;justify-content:space-between;align-items:baseline;gap:20px;flex-wrap:wrap;}
+.compare-head{display:flex;align-items:center;gap:14px;flex-wrap:wrap;}
 .compare h3{
-  font-size:clamp(2rem,6vw,4rem);line-height:.92;letter-spacing:-.05em;
-  font-weight:500;text-transform:uppercase;margin:clamp(14px,2vw,24px) 0 0;
+  font-size:clamp(2rem,5.4vw,3.6rem);line-height:.95;letter-spacing:-.045em;
+  font-weight:600;text-transform:uppercase;margin:clamp(12px,1.8vw,20px) 0 0;
 }
-.compare-line{font-size:clamp(1.0625rem,1.9vw,1.375rem);letter-spacing:-.02em;margin:16px 0 0;max-width:40ch;}
-.panes{display:grid;gap:2px;margin-top:clamp(30px,4vw,48px);border-top:1px solid var(--rule);}
-@media(min-width:840px){.panes{grid-template-columns:1fr 1fr;gap:0;}}
-.pane{padding:26px 0 30px;border-bottom:1px solid var(--rule);}
-@media(min-width:840px){
-  .pane{border-bottom:0;padding:28px 40px 30px 0;}
-  .pane + .pane{border-left:1px solid var(--rule);padding:28px 0 30px 40px;}
-}
-.pane-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px;}
-.pane h4{margin:0;font-size:.9375rem;font-weight:500;letter-spacing:-.01em;}
+.compare-line{font-size:clamp(1.0625rem,1.9vw,1.375rem);letter-spacing:-.02em;margin:14px 0 0;max-width:42ch;color:var(--muted);}
+.panes{display:grid;gap:clamp(14px,1.8vw,20px);margin-top:clamp(24px,3vw,38px);}
+@media(min-width:840px){.panes{grid-template-columns:1fr 1fr;}}
+.pane{background:var(--surface);border-radius:var(--r);overflow:hidden;padding:clamp(18px,2.2vw,24px);}
+.pane.with{background:var(--ink-deep);color:var(--on-ink);}
+.pane-top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:16px;}
+.pane h4{margin:0;font-size:1rem;font-weight:600;letter-spacing:-.015em;}
 .pane.without h4{color:var(--muted);}
+.pane .label{color:var(--faint);}
+.pane.with .label{color:#5F5D58;}
 .pane p.cap{margin:18px 0 0;color:var(--muted);font-size:.9375rem;max-width:40ch;}
-.pane.with p.cap{color:var(--ink);}
-
-/* the animated stage */
-.stage{
-  margin-top:20px;position:relative;overflow:hidden;
-  aspect-ratio:16/10;background:var(--white);border:1px solid var(--rule);
-}
-.pane.with .stage{background:var(--ink-deep);border-color:var(--ink-deep);}
-.stage-in{position:absolute;inset:0;padding:18px 20px;display:flex;flex-direction:column;}
+.pane.with p.cap{color:#9B9993;}
+.stage{position:relative;overflow:hidden;aspect-ratio:16/10;background:var(--surface-2);border-radius:var(--r-sm);}
+.pane.with .stage{background:#141414;}
+.stage-in{position:absolute;inset:0;padding:16px 18px;display:flex;flex-direction:column;}
 .stage-hd{
-  font-family:var(--mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--faint);display:flex;justify-content:space-between;gap:12px;
-  padding-bottom:10px;border-bottom:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);display:flex;justify-content:space-between;gap:10px;
+  padding-bottom:10px;border-bottom:1px solid var(--surface-3);
 }
-.pane.with .stage-hd{color:#5F5D58;border-bottom-color:#1D1D1D;}
-.stage-body{flex:1;min-height:0;position:relative;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:14px 0 2px;}
-
-/* generic bits used inside stages */
-.ln{height:7px;background:var(--rule);border-radius:1px;}
+.pane.with .stage-hd{color:#5F5D58;border-bottom-color:#232323;}
+.stage-body{flex:1;min-height:0;position:relative;display:flex;flex-direction:column;justify-content:center;gap:7px;padding:12px 0 2px;}
+.stage svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;}
+.ln{height:7px;background:var(--surface-3);border-radius:100px;}
 .pane.with .ln{background:#242424;}
 .ln.hi{background:var(--ink);}
 .pane.with .ln.hi{background:var(--on-ink);}
-.rowline{display:flex;align-items:center;gap:10px;}
+.rowline{display:flex;align-items:center;gap:10px;min-height:14px;}
 .rowline .tag{
   font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;color:var(--faint);
   width:9ch;flex:none;text-transform:uppercase;white-space:nowrap;
 }
 .pane.with .rowline .tag{color:#6B6963;}
-.rowline .bar-t{flex:1;height:1px;background:var(--rule);position:relative;}
+.rowline .bar-t{flex:1;height:4px;background:var(--surface-3);border-radius:100px;position:relative;overflow:hidden;}
 .pane.with .rowline .bar-t{background:#242424;}
-.rowline .bar-f{position:absolute;left:0;top:-1px;height:3px;width:0;background:var(--ink);}
+.rowline .bar-f{position:absolute;left:0;top:0;bottom:0;width:0;background:var(--ink);border-radius:100px;}
 .pane.with .rowline .bar-f{background:var(--on-ink);}
-.qm{
-  font-family:var(--mono);font-size:.625rem;color:var(--faint);width:2ch;flex:none;text-align:right;
-}
+.qm{font-family:var(--mono);font-size:.625rem;color:var(--faint);width:2ch;flex:none;text-align:right;}
 .pane.with .qm{color:#6B6963;}
 .chip{
   font-family:var(--mono);font-size:.5625rem;letter-spacing:.1em;text-transform:uppercase;
-  border:1px solid var(--rule);padding:4px 7px;color:var(--faint);display:inline-block;
+  background:var(--surface-3);padding:4px 8px;border-radius:100px;color:var(--muted);
 }
-.pane.with .chip{border-color:#242424;color:var(--on-ink-muted);}
-.stage-body.top{justify-content:center;}
+.pane.with .chip{background:#232323;color:var(--on-ink-muted);}
 .stage-list{position:relative;display:flex;flex-direction:column;gap:7px;}
-.rowline{min-height:14px;}
-.marker{
-  position:absolute;left:-4px;right:-4px;top:-4px;height:21px;
-  border:1px solid var(--ink);opacity:.5;pointer-events:none;
-}
-.pane.with .marker{border-color:var(--on-ink);}
-.addr{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);padding:8px 9px;margin-bottom:14px;}
-.pane.with .addr{border-color:#242424;}
+.marker{position:absolute;left:-6px;right:-6px;top:-4px;height:21px;border-radius:6px;background:rgba(14,14,14,.08);pointer-events:none;}
+.addr{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:8px;padding:8px 10px;margin-bottom:12px;}
+.pane.with .addr{background:#1B1B1B;}
 .addr .ln{height:6px;}
-.caret{width:1px;height:12px;background:var(--ink);display:inline-block;flex:none;}
+.caret{width:1px;height:12px;background:var(--ink);flex:none;}
 .pane.with .caret{background:var(--on-ink);}
-.track{height:1px;background:var(--rule);position:relative;margin-top:16px;}
+.track{height:4px;background:var(--surface-3);border-radius:100px;position:relative;margin-top:16px;overflow:hidden;}
 .pane.with .track{background:#242424;}
-.track i{position:absolute;left:0;top:-1px;height:3px;background:var(--ink);display:block;}
+.track i{position:absolute;left:0;top:0;bottom:0;background:var(--ink);border-radius:100px;}
 .pane.with .track i{background:var(--on-ink);}
 .slot{display:flex;align-items:center;gap:10px;}
-.slot .cell{flex:1;height:16px;border:1px solid var(--rule);position:relative;overflow:hidden;}
-.pane.with .slot .cell{border-color:#242424;}
-.slot .cell i{position:absolute;left:0;top:0;bottom:0;width:66%;background:var(--ink);}
+.slot .cell{flex:1;height:16px;background:var(--surface-3);border-radius:6px;position:relative;overflow:hidden;}
+.pane.with .slot .cell{background:#232323;}
+.slot .cell i{position:absolute;left:0;top:0;bottom:0;width:66%;background:var(--ink);border-radius:6px;}
 .pane.with .slot .cell i{background:var(--on-ink);}
-.stage svg{position:absolute;left:0;top:0;width:100%;height:100%;display:block;}
-.st-rule{stroke:#DCDAD4;stroke-width:1;fill:none;}
-.pane.with .st-rule{stroke:#242424;}
-.st-line{stroke:#101010;stroke-width:1.25;fill:none;}
+.st-rule{stroke:#CFCDC7;stroke-width:1;fill:none;}
+.pane.with .st-rule{stroke:#2C2C2C;}
+.st-line{stroke:#0E0E0E;stroke-width:1.4;fill:none;}
 .pane.with .st-line{stroke:#EDEBE6;}
-.st-dim{stroke:#C9C7C1;stroke-width:1;fill:none;}
-.pane.with .st-dim{stroke:#3A3A3A;}
-.st-txt{font-family:var(--mono);font-size:9px;fill:#78766F;letter-spacing:.1em;}
-.pane.with .st-txt{fill:#6B6963;}
 
-/* ---------------- animation, only while the pair is on screen -------------
-   Each loop runs on a 9s cycle so the two panes stay in step.
-   These are illustrative loops, not screen recordings. Swap in real capture
-   later by replacing the .stage contents; nothing else depends on them.
-   -------------------------------------------------------------------------- */
+/* workflow animation, 9s loop, only while visible */
 .compare .anim{animation-duration:9s;animation-iteration-count:infinite;animation-play-state:paused;}
 .compare.live .anim{animation-play-state:running;}
-
-/* stepped reveal: rows arrive one at a time */
 .a-rv{clip-path:inset(0 0 100% 0);}
 .compare.live .a-rv{animation-name:revealSlow;}
-@keyframes revealSlow{
-  0%{clip-path:inset(0 0 100% 0);}
-  86%{clip-path:inset(0 0 0 0);}
-  100%{clip-path:inset(0 0 0 0);}
-}
+@keyframes revealSlow{0%{clip-path:inset(0 0 100% 0);}86%,100%{clip-path:inset(0 0 0 0);}}
 .a-rv-fast{clip-path:inset(0 0 100% 0);}
 .compare.live .a-rv-fast{animation-name:revealFast;}
-@keyframes revealFast{
-  0%,14%{clip-path:inset(0 0 100% 0);}
-  30%{clip-path:inset(0 0 0 0);}
-  100%{clip-path:inset(0 0 0 0);}
-}
+@keyframes revealFast{0%,14%{clip-path:inset(0 0 100% 0);}30%,100%{clip-path:inset(0 0 0 0);}}
 .s8{animation-timing-function:steps(8,end);}
 .s6{animation-timing-function:steps(6,end);}
 .s4{animation-timing-function:steps(4,end);}
 .s3{animation-timing-function:steps(3,end);}
-
-/* an address being typed */
 .a-type{width:8%;}
 .compare.live .a-type{animation-name:typeIn;animation-timing-function:steps(14,end);}
-@keyframes typeIn{
-  0%{width:6%;}
-  12%{width:64%;}
-  100%{width:64%;}
-}
-.a-caret{opacity:1;}
+@keyframes typeIn{0%{width:6%;}12%,100%{width:64%;}}
 .compare.live .a-caret{animation-name:caret;animation-duration:1.1s;animation-timing-function:steps(2,end);}
 @keyframes caret{0%{opacity:1;}50%{opacity:0;}100%{opacity:1;}}
-
-/* a guess that keeps moving */
 .compare.live .a-wander{animation-name:wander;animation-timing-function:steps(1,end);}
 @keyframes wander{
-  0%{transform:translateY(0);}
-  13%{transform:translateY(300%);}
-  26%{transform:translateY(100%);}
-  39%{transform:translateY(600%);}
-  52%{transform:translateY(200%);}
-  65%{transform:translateY(500%);}
-  78%{transform:translateY(700%);}
-  91%,100%{transform:translateY(400%);}
+  0%{transform:translateY(0);}13%{transform:translateY(300%);}
+  26%{transform:translateY(100%);}39%{transform:translateY(600%);}
+  52%{transform:translateY(200%);}65%{transform:translateY(500%);}
+  78%{transform:translateY(700%);}91%,100%{transform:translateY(400%);}
 }
-
-/* the answer arriving */
 .a-grow{width:0;}
 .compare.live .a-grow{animation-name:grow;animation-timing-function:cubic-bezier(.22,.75,.2,1);}
-@keyframes grow{
-  0%,16%{width:0;}
-  44%,92%{width:var(--w);}
-  100%{width:0;}
-}
-
-/* a book of clients going quiet */
+@keyframes grow{0%,16%{width:0;}44%,92%{width:var(--w);}100%{width:0;}}
 .compare.live .a-fade{animation-name:fadeQuiet;animation-timing-function:ease-in-out;}
-@keyframes fadeQuiet{
-  0%,6%{opacity:1;}
-  70%,90%{opacity:.13;}
-  100%{opacity:1;}
-}
+@keyframes fadeQuiet{0%,6%{opacity:1;}70%,90%{opacity:.14;}100%{opacity:1;}}
 .compare.live .a-months{animation-name:months;animation-timing-function:linear;}
-@keyframes months{
-  0%,6%{width:2%;}
-  90%{width:100%;}
-  100%{width:2%;}
-}
-
-/* something moving on the record */
+@keyframes months{0%,6%{width:2%;}90%{width:100%;}100%{width:2%;}}
 .compare.live .a-pulse{animation-name:pulse;animation-timing-function:ease-in-out;}
-@keyframes pulse{
-  0%,100%{opacity:.3;}
-  8%{opacity:1;}
-  26%,88%{opacity:.75;}
-}
-
-/* lines and furniture drawing themselves in */
+@keyframes pulse{0%,100%{opacity:.3;}8%{opacity:1;}26%,88%{opacity:.78;}}
 .a-draw{stroke-dasharray:var(--len,320);stroke-dashoffset:var(--len,320);}
 .compare.live .a-draw{animation-name:draw;animation-timing-function:ease-out;}
-@keyframes draw{
-  0%,12%{stroke-dashoffset:var(--len,320);}
-  48%,90%{stroke-dashoffset:0;}
-  100%{stroke-dashoffset:var(--len,320);}
-}
+@keyframes draw{0%,12%{stroke-dashoffset:var(--len,320);}48%,90%{stroke-dashoffset:0;}100%{stroke-dashoffset:var(--len,320);}}
 .compare.live .a-spin{animation-name:spin;transform-origin:50% 62%;animation-timing-function:ease-in-out;}
-@keyframes spin{
-  0%,44%{transform:rotate(0deg);}
-  76%,90%{transform:rotate(-8deg);}
-  100%{transform:rotate(0deg);}
-}
+@keyframes spin{0%,44%{transform:rotate(0deg);}76%,90%{transform:rotate(-7deg);}100%{transform:rotate(0deg);}}
 
+/* ---------- pricing ---------- */
+.tiers{display:grid;gap:clamp(14px,1.8vw,20px);}
+@media(min-width:880px){.tiers{grid-template-columns:repeat(3,1fr);}}
+.tier{background:var(--surface);border-radius:var(--r-lg);padding:clamp(24px,3vw,34px);display:flex;flex-direction:column;}
+.tier.feature{background:var(--ink-deep);color:var(--on-ink);}
+.tier.feature .label{color:var(--on-ink-muted);}
+.tier h3{margin:14px 0 0;font-size:1.625rem;font-weight:600;letter-spacing:-.03em;text-transform:uppercase;}
+.tier h3[data-slot]{color:var(--faint);text-transform:none;font-size:1.125rem;}
+.tier .price{font-family:var(--mono);font-size:.75rem;letter-spacing:.06em;color:var(--faint);margin:12px 0 22px;}
+.tier.feature .price{color:#7C7A74;}
+.tier ul{list-style:none;margin:0;padding:0;flex:1;}
+.tier li{
+  font-size:.9375rem;color:var(--muted);padding:9px 0 9px 24px;position:relative;
+}
+.tier.feature li{color:#9B9993;}
+.tier li::before{
+  content:"";position:absolute;left:2px;top:15px;width:9px;height:5px;
+  border-left:1.5px solid currentColor;border-bottom:1.5px solid currentColor;
+  transform:rotate(-45deg);opacity:.65;
+}
+.tier .btn{margin-top:24px;text-align:center;}
+
+/* ---------- early access ---------- */
+.close-sec{background:var(--ink-deep);color:var(--on-ink);text-align:center;}
+.close-sec .label{color:var(--on-ink-muted);}
+.close-sec h2{font-size:clamp(1.9rem,4.4vw,3.15rem);line-height:1.04;letter-spacing:-.04em;font-weight:600;margin:18px auto 0;max-width:16ch;color:#fff;}
+.close-sec .sub{margin:18px auto 0;color:#9B9993;max-width:46ch;}
+.form{display:grid;gap:12px;margin:clamp(30px,4vw,44px) auto 0;max-width:560px;text-align:left;}
+@media(min-width:600px){.form{grid-template-columns:1fr 1fr;}}
+.field{display:flex;flex-direction:column;gap:7px;}
+label{font-family:var(--mono);font-size:.625rem;letter-spacing:.14em;text-transform:uppercase;color:#7C7A74;}
+input{
+  font:inherit;font-size:1rem;padding:13px 15px;border:1px solid #262626;border-radius:12px;
+  background:#141414;color:#fff;min-height:48px;transition:border-color .2s;
+}
+input:focus{outline:0;border-color:#4A4A4A;}
+.form-foot{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:center;margin-top:8px;}
+.formnote{font-family:var(--mono);font-size:.625rem;letter-spacing:.06em;color:#7C7A74;margin:0;max-width:36ch;line-height:1.7;}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-deep);color:#7C7A74;padding:0 0 40px;}
+.foot{
+  display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;
+  padding-top:30px;border-top:1px solid var(--on-ink-rule);
+  font-family:var(--mono);font-size:.625rem;letter-spacing:.1em;text-transform:uppercase;
+}
+.foot a:hover{color:var(--on-ink);}
+.foot nav{display:flex;flex-wrap:wrap;gap:10px 22px;}
+
+/* ---------- views and motion ---------- */
+.view{display:none;}
+.view.is-active{display:block;}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
+.rv.in{opacity:1;transform:none;}
 @media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .rv,.rfill,.verdict,.card,.card-art svg{transition:none;}
+  .rv{opacity:1;transform:none;}
   .compare .anim{animation:none!important;}
   .a-rv,.a-rv-fast{clip-path:none;}
   .a-type{width:64%;}
   .a-grow{width:var(--w);}
   .a-draw{stroke-dashoffset:0;}
 }
-
-/* ---------------- pricing ---------------- */
-.tiers{display:grid;border-top:1px solid var(--rule);margin-top:clamp(48px,7vw,88px);}
-@media(min-width:880px){.tiers{grid-template-columns:repeat(3,1fr);}}
-.tier{padding:32px 0 36px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;}
-@media(min-width:880px){
-  .tier{border-bottom:0;padding:34px 36px 8px 0;}
-  .tier + .tier{border-left:1px solid var(--rule);padding-left:36px;}
-}
-.tier h3{margin:14px 0 0;font-size:1.5rem;font-weight:500;letter-spacing:-.03em;text-transform:uppercase;}
-.tier h3[data-slot]{color:var(--faint);text-transform:none;font-size:1.125rem;border-bottom:1px dashed var(--rule);display:inline-block;padding-bottom:3px;}
-.price{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--faint);margin:14px 0 26px;}
-.tier ul{list-style:none;margin:0;padding:0;flex:1;}
-.tier li{font-size:.9375rem;color:var(--muted);padding:9px 0;border-top:1px solid var(--rule-soft);}
-.tier li:first-child{border-top:0;}
-.tier .link-cta{margin-top:28px;align-self:flex-start;color:var(--ink);}
-
-/* ---------------- early access ---------------- */
-.close-sec{background:var(--ink-deep);color:var(--on-ink);}
-.close-sec h2{color:#fff;}
-.form{display:grid;margin-top:clamp(38px,5vw,60px);max-width:640px;border-top:1px solid var(--on-ink-rule);}
-@media(min-width:620px){.form{grid-template-columns:1fr 1fr;}}
-.field{display:flex;flex-direction:column;gap:8px;padding:20px 0 22px;border-bottom:1px solid var(--on-ink-rule);}
-@media(min-width:620px){.field:nth-child(odd){padding-right:32px;}}
-label{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:#7C7A74;}
-input{font:inherit;font-size:1.0625rem;padding:0;border:0;background:transparent;color:#fff;min-height:32px;}
-input::placeholder{color:#5A5954;}
-input:focus{outline:0;}
-.field:focus-within label{color:var(--on-ink-muted);}
-.form-foot{grid-column:1/-1;padding-top:26px;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;}
-.submit{
-  font:inherit;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
-  background:var(--on-ink);color:var(--ink-deep);border:0;padding:14px 26px;cursor:pointer;transition:opacity .25s;
-}
-.submit:hover{opacity:.8;}
-.formnote{font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;color:#93918B;margin:0;max-width:40ch;line-height:1.7;}
-
-/* ---------------- footer ---------------- */
-footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
-.foot{
-  display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;align-items:center;
-  padding-top:36px;border-top:1px solid var(--on-ink-rule);
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;
-}
-.foot a{text-decoration:none;}
-.foot a:hover{color:var(--on-ink);}
-.foot nav{display:flex;flex-wrap:wrap;gap:12px 26px;}
-
-/* ---------------- motion ---------------- */
-.rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
-.rv.in{opacity:1;transform:none;}
-@media(prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto;}
-  .rv,.rfill,.verdict,.five-row{transition:none;}
-  .rv{opacity:1;transform:none;}
-  .compare .anim{animation:none;}
-}
-
-/* ---------------- views: one file, four screens ---------------- */
-.view{display:none;}
-.view.is-active{display:block;}
 </style>
 </head>
 <body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-details" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h4"/></symbol>
+  <symbol id="i-interest" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21v-5M11 21V9M16 21v-8M21 21v-3"/></symbol>
+  <symbol id="i-retention" viewBox="0 0 24 24"><circle cx="5" cy="12" r="2.2"/><path d="M7.2 12h3.3"/><path d="M10.5 12c3.4 0 3-6 6.4-6M10.5 12h6.4M10.5 12c3.4 0 3 6 6.4 6"/><circle cx="19" cy="6" r="1.6"/><circle cx="19" cy="12" r="1.6"/><circle cx="19" cy="18" r="1.6"/></symbol>
+  <symbol id="i-vision" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M6 16h6v-3H6z"/><circle cx="16.5" cy="10" r="1.7"/><path d="M16.5 11.7V16"/></symbol>
+  <symbol id="i-order" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="M9 15.5l2 2 4-4"/></symbol>
+  <symbol id="i-tick" viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></symbol>
+</svg>
 
 <header class="nav" id="nav" data-mode="dark">
   <div class="wrap nav-in">
@@ -525,181 +502,311 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
 
 <main id="top">
 
-  <!-- ============================ HOME ============================ -->
   <section class="view is-active" id="view-home">
-  <section class="masthead tall">
-    <div class="wrap masthead-in">
-      <p class="label">Basis, for Singapore property agents</p>
+    <section class="hero">
+      <div class="wrap">
+        <p class="label">For Singapore property agents</p>
+        <h1>You're good with people. <span class="dim">Machines are good with numbers.</span></h1>
+        <p class="hero-sub">So stop doing both.</p>
+        <div class="hero-acts">
+          <a class="btn" href="#workflow">See the difference</a>
+          <a class="btn ghost" href="#access">Get early access</a>
+        </div>
+      </div>
+    </section>
 
-      <h1>You're good with people. <span class="dim">Machines are good with numbers.</span></h1>
-      <p class="stop">So stop doing both.</p>
+    <section class="quick">
+      <div class="wrap">
+        <div class="quick-row">
+        <a class="quick-tile" href="#five/details">
+          <span class="quick-ico"><svg  aria-hidden="true"><use href="#i-details"></use></svg></span>
+          <span>Details</span>
+        </a>
+        <a class="quick-tile" href="#five/interest">
+          <span class="quick-ico"><svg  aria-hidden="true"><use href="#i-interest"></use></svg></span>
+          <span>Interest</span>
+        </a>
+        <a class="quick-tile" href="#five/retention">
+          <span class="quick-ico"><svg  aria-hidden="true"><use href="#i-retention"></use></svg></span>
+          <span>Retention</span>
+        </a>
+        <a class="quick-tile" href="#five/vision">
+          <span class="quick-ico"><svg  aria-hidden="true"><use href="#i-vision"></use></svg></span>
+          <span>Vision</span>
+        </a>
+        <a class="quick-tile" href="#five/order">
+          <span class="quick-ico"><svg  aria-hidden="true"><use href="#i-order"></use></svg></span>
+          <span>Order</span>
+        </a>
+        </div>
+      </div>
+    </section>
 
-      <div class="banner-grid">
-        <div class="banner-side">
-          <div class="acts">
-            <a class="link-cta" href="#access">Get early access</a>
-            <a class="link-cta quiet" href="#workflow">See the difference</a>
+    <section class="sec">
+      <div class="wrap">
+        <div class="sec-top rv">
+          <div>
+            <h2 class="sec-title">Five things off your evening.</h2>
+            <p class="sub">One ships today. Four are in build, and labelled.</p>
           </div>
-          <div class="src">
-            <b>Sources</b>
-            <span>URA</span><span>HDB</span><span>MOE</span><span>LTA</span><span>OneMap</span>
+          <a class="more" href="#five">All five</a>
+        </div>
+
+        <div class="cards rv">
+        <a class="card wide" href="#five/details">
+          <div class="card-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: a sourced deck, eight sections">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <rect x="66" y="38" width="86" height="7" rx="3.5" fill="#0E0E0E"/>
+  <rect x="66" y="53" width="52" height="5" rx="2.5" fill="#CFCDC7"/>
+  <g fill="#CFCDC7">
+    <rect x="66" y="76" width="26" height="5" rx="2.5"/><rect x="104" y="76" width="150" height="5" rx="2.5"/>
+    <rect x="66" y="93" width="26" height="5" rx="2.5"/><rect x="104" y="93" width="128" height="5" rx="2.5"/>
+    <rect x="66" y="110" width="26" height="5" rx="2.5"/><rect x="104" y="110" width="150" height="5" rx="2.5"/>
+    <rect x="66" y="127" width="26" height="5" rx="2.5"/><rect x="104" y="127" width="112" height="5" rx="2.5"/>
+    <rect x="66" y="144" width="26" height="5" rx="2.5"/><rect x="104" y="144" width="140" height="5" rx="2.5"/>
+    <rect x="66" y="161" width="26" height="5" rx="2.5"/><rect x="104" y="161" width="96" height="5" rx="2.5"/>
+  </g>
+  <rect x="104" y="93" width="46" height="5" rx="2.5" fill="#0E0E0E"/>
+  <rect x="104" y="144" width="34" height="5" rx="2.5" fill="#0E0E0E"/>
+</svg></div>
+          <div class="card-body">
+            <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-details"></use></svg><span class="card-state">Available now</span></div>
+            <h3>Details</h3>
+            <p>Everything the appointment turns on, in one place.</p>
+            <span class="more">Learn more</span>
+          </div>
+        </a>
+        <a class="card wide" href="#five/interest">
+          <div class="card-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: one section read far more than the others">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <g fill="#CFCDC7">
+    <rect x="68" y="44" width="62" height="6" rx="3"/>
+    <rect x="68" y="68" width="88" height="6" rx="3"/>
+    <rect x="68" y="116" width="40" height="6" rx="3"/>
+    <rect x="68" y="140" width="66" height="6" rx="3"/>
+    <rect x="68" y="164" width="30" height="6" rx="3"/>
+  </g>
+  <rect x="68" y="90" width="184" height="8" rx="4" fill="#0E0E0E"/>
+  <circle cx="252" cy="94" r="7" fill="#0E0E0E"/>
+  <circle cx="252" cy="94" r="12" fill="none" stroke="#0E0E0E" stroke-width="1.2" opacity=".35"/>
+</svg></div>
+          <div class="card-body">
+            <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-interest"></use></svg><span class="card-state">In build</span></div>
+            <h3>Interest</h3>
+            <p>See what your client actually reads.</p>
+            <span class="more">Learn more</span>
+          </div>
+        </a>
+        <a class="card" href="#five/retention">
+          <div class="card-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: one announcement routed to three client groups">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <circle cx="88" cy="103" r="9" fill="#0E0E0E"/>
+  <circle cx="88" cy="103" r="17" fill="none" stroke="#0E0E0E" stroke-width="1.1" opacity=".3"/>
+  <circle cx="88" cy="103" r="25" fill="none" stroke="#0E0E0E" stroke-width="1" opacity=".16"/>
+  <path d="M116 103 C 148 103, 148 56, 182 56" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <path d="M116 103 H 182" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <path d="M116 103 C 148 103, 148 150, 182 150" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <rect x="182" y="46" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <rect x="182" y="93" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <rect x="182" y="140" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <g fill="#0E0E0E"><circle cx="196" cy="56" r="3"/><circle cx="196" cy="103" r="3"/><circle cx="196" cy="150" r="3"/></g>
+  <g fill="#CFCDC7"><rect x="206" y="53" width="34" height="5" rx="2.5"/><rect x="206" y="100" width="34" height="5" rx="2.5"/><rect x="206" y="147" width="34" height="5" rx="2.5"/></g>
+</svg></div>
+          <div class="card-body">
+            <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-retention"></use></svg><span class="card-state">In build</span></div>
+            <h3>Retention</h3>
+            <p>A reason to call, on the day there is one.</p>
+            <span class="more">Learn more</span>
+          </div>
+        </a>
+        <a class="card" href="#five/vision">
+          <div class="card-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: an empty room furnished and shown in 3D">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <g fill="none" stroke="#CFCDC7" stroke-width="1.2">
+    <path d="M66 36 L106 62 M254 36 L214 62 M66 170 L106 144 M254 170 L214 144"/>
+    <rect x="106" y="62" width="108" height="82"/>
+    <path d="M66 36 V170 M254 36 V170 M106 144 H214"/>
+  </g>
+  <g fill="none" stroke="#0E0E0E" stroke-width="1.4">
+    <rect x="112" y="146" width="76" height="22" rx="5"/>
+    <rect x="104" y="172" width="94" height="10" rx="4"/>
+    <rect x="120" y="76" width="32" height="24" rx="2"/>
+    <rect x="204" y="164" width="40" height="9" rx="4"/>
+    <path d="M228 122 V164"/><circle cx="228" cy="115" r="8"/>
+  </g>
+</svg></div>
+          <div class="card-body">
+            <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-vision"></use></svg><span class="card-state">In build</span></div>
+            <h3>Vision</h3>
+            <p>Let them see it before they visit.</p>
+            <span class="more">Learn more</span>
+          </div>
+        </a>
+        <a class="card" href="#five/order">
+          <div class="card-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: a booking calendar filling itself">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <path d="M46 52 H274" stroke="#E9E8E3" stroke-width="1.4"/>
+  <g fill="#CFCDC7"><circle cx="70" cy="35" r="3"/><circle cx="82" cy="35" r="3"/><circle cx="94" cy="35" r="3"/></g>
+  <g fill="#E9E8E3">
+    <rect x="66" y="70" width="42" height="26" rx="6"/><rect x="116" y="70" width="42" height="26" rx="6"/>
+    <rect x="166" y="70" width="42" height="26" rx="6"/><rect x="216" y="70" width="42" height="26" rx="6"/>
+    <rect x="66" y="106" width="42" height="26" rx="6"/><rect x="116" y="106" width="42" height="26" rx="6"/>
+    <rect x="166" y="106" width="42" height="26" rx="6"/><rect x="216" y="106" width="42" height="26" rx="6"/>
+    <rect x="66" y="142" width="42" height="26" rx="6"/><rect x="116" y="142" width="42" height="26" rx="6"/>
+    <rect x="166" y="142" width="42" height="26" rx="6"/><rect x="216" y="142" width="42" height="26" rx="6"/>
+  </g>
+  <g fill="#0E0E0E">
+    <rect x="116" y="70" width="42" height="26" rx="6"/>
+    <rect x="166" y="106" width="42" height="26" rx="6"/>
+    <rect x="66" y="142" width="42" height="26" rx="6"/>
+  </g>
+</svg></div>
+          <div class="card-body">
+            <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-order"></use></svg><span class="card-state">In build</span></div>
+            <h3>Order</h3>
+            <p>Bookings taken while you are at a viewing.</p>
+            <span class="more">Learn more</span>
+          </div>
+        </a>
+        </div>
+
+        <a class="promo rv" href="#workflow">
+          <div class="promo-txt">
+            <p class="label" style="color:#9B9993">The difference</p>
+            <h3>Same Tuesday night. Two different evenings.</h3>
+            <p>Five side by side loops. Nine seconds each and you have the whole argument.</p>
+            <span class="btn">Compare, side by side</span>
+          </div>
+          <div class="promo-art"><svg viewBox="0 0 420 210" role="img" aria-label="Illustration: the same evening, before and after">
+  <rect x="6" y="14" width="192" height="182" rx="12" fill="#151515"/>
+  <g fill="#2A2A2A">
+    <rect x="26" y="40" width="30" height="6" rx="3"/><rect x="66" y="40" width="112" height="6" rx="3"/>
+    <rect x="26" y="60" width="30" height="6" rx="3"/><rect x="66" y="60" width="92" height="6" rx="3"/>
+    <rect x="26" y="80" width="30" height="6" rx="3"/><rect x="66" y="80" width="106" height="6" rx="3"/>
+    <rect x="26" y="100" width="30" height="6" rx="3"/><rect x="66" y="100" width="84" height="6" rx="3"/>
+    <rect x="26" y="120" width="30" height="6" rx="3"/><rect x="66" y="120" width="100" height="6" rx="3"/>
+    <rect x="26" y="140" width="30" height="6" rx="3"/><rect x="66" y="140" width="72" height="6" rx="3"/>
+    <rect x="26" y="160" width="30" height="6" rx="3"/><rect x="66" y="160" width="94" height="6" rx="3"/>
+  </g>
+  <rect x="222" y="14" width="192" height="182" rx="12" fill="#EDEBE6"/>
+  <rect x="242" y="36" width="152" height="22" rx="8" fill="#D9D7D1"/>
+  <rect x="252" y="44" width="80" height="6" rx="3" fill="#0A0A0A"/>
+  <g fill="#C4C2BC">
+    <rect x="242" y="76" width="30" height="6" rx="3"/><rect x="282" y="76" width="112" height="6" rx="3"/>
+    <rect x="242" y="96" width="30" height="6" rx="3"/><rect x="282" y="96" width="92" height="6" rx="3"/>
+    <rect x="242" y="116" width="30" height="6" rx="3"/><rect x="282" y="116" width="106" height="6" rx="3"/>
+    <rect x="242" y="136" width="30" height="6" rx="3"/><rect x="282" y="136" width="84" height="6" rx="3"/>
+    <rect x="242" y="156" width="30" height="6" rx="3"/><rect x="282" y="156" width="100" height="6" rx="3"/>
+  </g>
+  <rect x="282" y="96" width="46" height="6" rx="3" fill="#0A0A0A"/>
+  <rect x="282" y="136" width="34" height="6" rx="3" fill="#0A0A0A"/>
+</svg></div>
+        </a>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div class="strip rv">
+        <b>Every figure traces back to a source</b>
+        <span>URA</span><span>HDB</span><span>MOE</span><span>LTA</span><span>OneMap</span>
+      </div>
+    </div>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="cards rv" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+          <div class="card" style="background:transparent">
+            <div class="card-body" style="padding-left:0">
+              <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-tick"></use></svg></div>
+              <h3 style="font-size:1.25rem">Sourced, never estimated</h3>
+              <p>Every figure carries its sample size. A median built from two transactions says two transactions.</p>
+            </div>
+          </div>
+          <div class="card" style="background:transparent">
+            <div class="card-body" style="padding-left:0">
+              <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-tick"></use></svg></div>
+              <h3 style="font-size:1.25rem">Gaps named, not filled</h3>
+              <p>What we cannot source is written down as missing rather than quietly guessed.</p>
+            </div>
+          </div>
+          <div class="card" style="background:transparent">
+            <div class="card-body" style="padding-left:0">
+              <div class="card-meta"><svg class="card-ico" aria-hidden="true"><use href="#i-tick"></use></svg></div>
+              <h3 style="font-size:1.25rem">Your name on the output</h3>
+              <p>Your agency and your CEA registration number. The client sees your work, not a vendor's logo.</p>
+            </div>
           </div>
         </div>
-
-        <div class="hook">
-          <p>We've watched agents lose entire evenings to preparation work. Pulling figures, checking schools, building decks, chasing what happened in Parliament, following up on people who went quiet months ago. All of it necessary. None of it why you got your licence.</p>
-          <p class="lift">Now it's handled. Decks built from an address. Links that tell you who's reading and what they're stuck on. News that arrives already sorted by which of your clients it hits. Empty rooms furnished. Units in 3D. A site taking bookings while you're at a viewing.</p>
-          <p>Students use it. Your kids use it. Your competitors are starting to.</p>
-          <p class="close">Level up with <b>BASIS</b>.</p>
-        </div>
       </div>
-    </div>
+    </section>
   </section>
 
-  <section class="sec" id="what">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div><p class="label">What we do</p></div>
-        <div>
-          <h2>We do the preparation. You do the part that needs a person.</h2>
-          <p class="body first">BASIS reads the public record every day, does the groundwork you would otherwise do at night, and hands it back in a form you can put straight in front of a client.</p>
-          <p class="body">It will not price your listing and it will not talk to your client. Those are yours. Everything in between is ours.</p>
-        </div>
-      </div>
-
-      <div class="tenets rv">
-        <div class="tenet">
-          <p class="label">01</p>
-          <h3>Sourced, never estimated</h3>
-          <p>Every figure traces back to URA, HDB, MOE, LTA or OneMap and arrives carrying its sample size. A median built from two transactions says two transactions.</p>
-        </div>
-        <div class="tenet">
-          <p class="label">02</p>
-          <h3>Gaps named, not filled</h3>
-          <p>Anything we cannot source is written down as missing rather than quietly guessed. You will never have to defend a number you cannot explain.</p>
-        </div>
-        <div class="tenet">
-          <p class="label">03</p>
-          <h3>Your name on the output</h3>
-          <p>Your name, your agency and your CEA registration number. The client sees your work, not a vendor's logo.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec tight" id="five">
-    <div class="wrap">
-      <div class="bar rv">
-        <p class="label">The five</p>
-        <p class="label">One of them ships today</p>
-      </div>
-
-      <div class="five rv">
-        <a class="five-row" href="#five/details" data-state="live">
-          <span class="five-n">01</span>
-          <h3 class="five-name">Details</h3>
-          <p class="five-line">Everything the appointment turns on, sourced and in one place.</p>
-          <span class="five-go">Read</span>
-        </a>
-        <a class="five-row" href="#five/interest" data-state="build">
-          <span class="five-n">02</span>
-          <h3 class="five-name">Interest</h3>
-          <p class="five-line">What your client actually reads, instead of what he told you.</p>
-          <span class="five-go">Read</span>
-        </a>
-        <a class="five-row" href="#five/retention" data-state="build">
-          <span class="five-n">03</span>
-          <h3 class="five-name">Retention</h3>
-          <p class="five-line">The reason to call, on the day there is one.</p>
-          <span class="five-go">Read</span>
-        </a>
-        <a class="five-row" href="#five/vision" data-state="build">
-          <span class="five-n">04</span>
-          <h3 class="five-name">Vision</h3>
-          <p class="five-line">Rooms furnished and units in 3D, so they can see it.</p>
-          <span class="five-go">Read</span>
-        </a>
-        <a class="five-row" href="#five/order" data-state="build">
-          <span class="five-n">05</span>
-          <h3 class="five-name">Order</h3>
-          <p class="five-line">A site that takes the booking while you are at a viewing.</p>
-          <span class="five-go">Read</span>
-        </a>
-      </div>
-
-      <p class="note rv">Each one opens in full on the five. Details is available now. The rest are in build and labelled as such wherever they appear.</p>
-    </div>
-  </section>
-
-  <section class="callout">
-    <div class="wrap inner">
-      <div>
-        <p class="label">The difference</p>
-        <h2>Same Tuesday night. Two different evenings.</h2>
-      </div>
-      <div>
-        <p class="body">We put the work you do now next to the work BASIS does instead, side by side, one loop each. It is the fastest way to see whether this is worth your time.</p>
-        <p style="margin:28px 0 0"><a class="link-cta" href="#workflow">Compare the workflow</a></p>
-      </div>
-    </div>
-  </section>
-  </section>
-
-  <!-- ============================ THE FIVE ============================ -->
   <section class="view" id="view-five">
-  <section class="masthead">
-    <div class="wrap masthead-in">
-      <p class="label">The five</p>
-      <h1>Details, interest, retention, vision, order.</h1>
-      <p class="stand">Five plain words. Each one is a piece of the evening you currently spend on preparation. One of them ships today and the other four are in build, labelled honestly wherever they appear.</p>
-      <p style="margin:34px 0 0"><a class="link-cta" href="#workflow">See them side by side</a></p>
-    </div>
-  </section>
-
-  <div class="wrap">
-
-    <article class="entry rv" id="details">
-      <div class="entry-top">
-        <p class="label">01</p>
-        <p class="label">Available now</p>
+    <section class="masthead">
+      <div class="wrap">
+        <p class="label">The five</p>
+        <h2>Details, interest, retention, vision, order.</h2>
+        <p class="stand">One ships today. Four are in build, and say so.</p>
+        <div class="hero-acts"><a class="btn" href="#workflow">See them side by side</a></div>
       </div>
-      <h2 class="entry-name">Details</h2>
-      <p class="entry-line">A deal turns on a detail. Usually one you did not check.</p>
-      <div class="entry-grid">
+    </section>
+
+    <div class="wrap">
+    <article class="detail rv" id="details">
+      <div class="detail-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-details"></use></svg><p class="label">01</p><p class="label" style="margin-left:auto">Available now</p></div>
+      <h2>Details</h2>
+      <div class="detail-copy">
+        <p class="lead">A deal turns on a detail. Usually one you did not check.</p>
         <div>
-          <p class="body">Type an address. Every detail worth having comes back in eight sections, and every figure arrives carrying its source and the number of transactions behind it.</p>
-          <p class="body">What we cannot source is named as missing rather than quietly filled in. So you walk into the appointment holding all of it, and holding nothing you cannot explain.</p>
-          <p class="note">Figures load from captured output. Nothing on this page is invented, so the slots below stay empty until there is a real number to put in them.</p>
+          <p class="body">Type an address. Every detail worth having comes back in eight sections, each figure carrying its source and the number of transactions behind it.</p>
+          <p class="body">What we cannot source is named as missing rather than quietly filled in.</p>
+          <p class="note">Figures load from captured output. The slots stay empty until there is a real number to put in them.</p>
         </div>
-        <ul class="spec">
-            <li><span class="n">01</span><span class="t">Property details</span><p class="d">Tenure, floor area, completion year and unit mix, read from the registry.</p><span class="fig"></span></li>
-            <li><span class="n">02</span><span class="t">Market prices</span><p class="d">Transactions in the project and around it, each median stamped with the sales behind it.</p><span class="fig"></span></li>
-            <li><span class="n">03</span><span class="t">Costs and financing</span><p class="d">Stamp duties, the cash and CPF split, and instalments your client can check line by line.</p><span class="fig"></span></li>
-            <li><span class="n">04</span><span class="t">Schools</span><p class="d">Inside the one and two kilometre bands, measured from MOE and OneMap data.</p><span class="fig"></span></li>
-            <li><span class="n">05</span><span class="t">Transport</span><p class="d">Stations, bus connections and drive times, drawn from LTA records.</p><span class="fig"></span></li>
-            <li><span class="n">06</span><span class="t">Amenities</span><p class="d">What sits within walking distance, located rather than described.</p><span class="fig"></span></li>
-            <li><span class="n">07</span><span class="t">Area outlook</span><p class="d">Planning decisions on record for the area, linked back to the primary document.</p><span class="fig"></span></li>
-            <li><span class="n">08</span><span class="t">Sources and gaps</span><p class="d">Every source cited, and every figure we could not find written down as missing.</p></li>
-        </ul>
+      </div>
+      <div class="detail-visual">
+          <div class="panel">
+            <div class="panel-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: a sourced deck, eight sections">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <rect x="66" y="38" width="86" height="7" rx="3.5" fill="#0E0E0E"/>
+  <rect x="66" y="53" width="52" height="5" rx="2.5" fill="#CFCDC7"/>
+  <g fill="#CFCDC7">
+    <rect x="66" y="76" width="26" height="5" rx="2.5"/><rect x="104" y="76" width="150" height="5" rx="2.5"/>
+    <rect x="66" y="93" width="26" height="5" rx="2.5"/><rect x="104" y="93" width="128" height="5" rx="2.5"/>
+    <rect x="66" y="110" width="26" height="5" rx="2.5"/><rect x="104" y="110" width="150" height="5" rx="2.5"/>
+    <rect x="66" y="127" width="26" height="5" rx="2.5"/><rect x="104" y="127" width="112" height="5" rx="2.5"/>
+    <rect x="66" y="144" width="26" height="5" rx="2.5"/><rect x="104" y="144" width="140" height="5" rx="2.5"/>
+    <rect x="66" y="161" width="26" height="5" rx="2.5"/><rect x="104" y="161" width="96" height="5" rx="2.5"/>
+  </g>
+  <rect x="104" y="93" width="46" height="5" rx="2.5" fill="#0E0E0E"/>
+  <rect x="104" y="144" width="34" height="5" rx="2.5" fill="#0E0E0E"/>
+</svg></div>
+            <ul class="panel-list">
+              <li><span class="n">01</span><span class="t">Property details</span><p class="d">Tenure, floor area, completion year and unit mix, read from the registry.</p><span class="fig"></span></li>
+              <li><span class="n">02</span><span class="t">Market prices</span><p class="d">Transactions in the project and around it, each median stamped with the sales behind it.</p><span class="fig"></span></li>
+              <li><span class="n">03</span><span class="t">Costs and financing</span><p class="d">Stamp duties, the cash and CPF split, and instalments your client can check line by line.</p><span class="fig"></span></li>
+              <li><span class="n">04</span><span class="t">Schools</span><p class="d">Inside the one and two kilometre bands, from MOE and OneMap data.</p><span class="fig"></span></li>
+              <li><span class="n">05</span><span class="t">Transport</span><p class="d">Stations, bus connections and drive times, from LTA records.</p><span class="fig"></span></li>
+              <li><span class="n">06</span><span class="t">Amenities</span><p class="d">What sits within walking distance, located rather than described.</p><span class="fig"></span></li>
+              <li><span class="n">07</span><span class="t">Area outlook</span><p class="d">Planning decisions on record, linked back to the primary document.</p><span class="fig"></span></li>
+              <li><span class="n">08</span><span class="t">Sources and gaps</span><p class="d">Every source cited, and every figure we could not find named as missing.</p></li>
+            </ul>
+          </div>
       </div>
     </article>
 
-    <article class="entry rv" id="interest">
-      <div class="entry-top">
-        <p class="label">02</p>
-        <p class="label">In build</p>
-      </div>
-      <h2 class="entry-name">Interest</h2>
-      <p class="entry-line">Interest is a fact. Stop reading it off a face.</p>
-      <div class="entry-grid">
+    <article class="detail rv" id="interest">
+      <div class="detail-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-interest"></use></svg><p class="label">02</p><p class="label" style="margin-left:auto">In build</p></div>
+      <h2>Interest</h2>
+      <div class="detail-copy">
+        <p class="lead">Interest is a fact. Stop reading it off a face.</p>
         <div>
-          <p class="body">Send the deck as a link instead of a file. You see which sections he opened, how long he stayed in each one, what he forwarded, and what he never went back to.</p>
-          <p class="body">He came in talking about schools. He spent fourteen of his nineteen minutes on financing and forwarded it twice. <b>Open Monday with the section he chose, not the one you assumed.</b></p>
-          <p class="note">One link per client. Revocable. Always reading current data, so a deck sent in March does not quote March prices in June.</p>
+          <p class="body">Send the deck as a link instead of a file. You see which sections he opened, how long he stayed, what he forwarded, and what he never went back to.</p>
+          <p class="body">He came in talking about schools. He spent fourteen of his nineteen minutes on financing. <b>Open Monday with the section he chose.</b></p>
         </div>
-        <div>
+      </div>
+      <div class="detail-visual">
           <div class="readout" id="readout">
-            <div class="bar" style="border-bottom:0;padding:0 0 16px">
+            <div class="readout-top">
               <p class="label">Client B, three opens</p>
               <button class="play" id="play" type="button">Play session</button>
             </div>
@@ -716,115 +823,143 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               <p class="sub">14 min of 19 min in one section. Forwarded twice.</p>
             </div>
           </div>
-          <p class="note">Illustrative session. No real agent or client data appears on this site.</p>
-        </div>
+          <p class="note">Illustrative session. No real agent or client data appears on this site. One link per client, revocable, always reading current data.</p>
       </div>
     </article>
 
-    <article class="entry rv" id="retention">
-      <div class="entry-top">
-        <p class="label">03</p>
-        <p class="label">In build</p>
-      </div>
-      <h2 class="entry-name">Retention</h2>
-      <p class="entry-line">You do not lose clients to competitors. You lose them to silence.</p>
-      <div class="entry-grid">
+    <article class="detail rv" id="retention">
+      <div class="detail-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-retention"></use></svg><p class="label">03</p><p class="label" style="margin-left:auto">In build</p></div>
+      <h2>Retention</h2>
+      <div class="detail-copy">
+        <p class="lead">You do not lose clients to competitors. You lose them to silence.</p>
         <div>
-          <p class="body">BASIS reads property news and the official record every day and goes to the primary document for Parliament and ministry announcements, not to somebody's summary of it.</p>
-          <p class="body">Then it does the hour you never have. It works out which of your own clients each change actually touches, groups them, and drafts the message for each group. <b>The client who went quiet in March hears from you the morning something moves that affects him.</b> You read it, change what you want, and send.</p>
+          <p class="body">BASIS reads the news and the official record every day, works out which of your clients each change actually touches, groups them, and drafts the message.</p>
+          <p class="body"><b>The client who went quiet in March hears from you the morning something moves that affects him.</b></p>
         </div>
-        <ul class="spec plain">
-            <li><span class="t">Primary record, not a summary</span><p class="d">Parliament and ministry releases read at source and linked back to the document.</p></li>
-            <li><span class="t">Sorted by client, not by topic</span><p class="d">The question it answers is who this hits, not what happened today.</p></li>
-            <li><span class="t">Drafted, never sent without you</span><p class="d">A message per group, waiting for your edit. Nothing leaves under your name until you send it.</p></li>
-            <li><span class="t">A reason to call</span><p class="d">Contact that is useful to the person receiving it, which is the only kind that keeps working.</p></li>
-        </ul>
+      </div>
+      <div class="detail-visual">
+          <div class="panel">
+            <div class="panel-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: one announcement routed to three client groups">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <circle cx="88" cy="103" r="9" fill="#0E0E0E"/>
+  <circle cx="88" cy="103" r="17" fill="none" stroke="#0E0E0E" stroke-width="1.1" opacity=".3"/>
+  <circle cx="88" cy="103" r="25" fill="none" stroke="#0E0E0E" stroke-width="1" opacity=".16"/>
+  <path d="M116 103 C 148 103, 148 56, 182 56" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <path d="M116 103 H 182" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <path d="M116 103 C 148 103, 148 150, 182 150" fill="none" stroke="#0E0E0E" stroke-width="1.3"/>
+  <rect x="182" y="46" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <rect x="182" y="93" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <rect x="182" y="140" width="70" height="20" rx="10" fill="#E9E8E3"/>
+  <g fill="#0E0E0E"><circle cx="196" cy="56" r="3"/><circle cx="196" cy="103" r="3"/><circle cx="196" cy="150" r="3"/></g>
+  <g fill="#CFCDC7"><rect x="206" y="53" width="34" height="5" rx="2.5"/><rect x="206" y="100" width="34" height="5" rx="2.5"/><rect x="206" y="147" width="34" height="5" rx="2.5"/></g>
+</svg></div>
+          </div>
+          <ul class="ticks" style="margin-top:26px">
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Primary record, not a summary</span><p class="d">Parliament and ministry releases read at source.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Sorted by client, not by topic</span><p class="d">The question it answers is who this hits.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Drafted, never sent without you</span><p class="d">Nothing leaves under your name until you send it.</p></li>
+          </ul>
       </div>
     </article>
 
-    <article class="entry rv" id="vision">
-      <div class="entry-top">
-        <p class="label">04</p>
-        <p class="label">In build</p>
-      </div>
-      <h2 class="entry-name">Vision</h2>
-      <p class="entry-line">Most buyers cannot picture it. So hand them the picture.</p>
-      <div class="entry-grid">
+    <article class="detail rv" id="vision">
+      <div class="detail-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-vision"></use></svg><p class="label">04</p><p class="label" style="margin-left:auto">In build</p></div>
+      <h2>Vision</h2>
+      <div class="detail-copy">
+        <p class="lead">Most buyers cannot picture it. So hand them the picture.</p>
         <div>
-          <p class="body">An empty room is a hard sell, because the buyer is standing in it doing the imagining alone and on the spot. Furnish it in the photograph instead, with every piece identified and the shops that sell it.</p>
-          <p class="body">Then let them walk the unit in 3D, from a phone, on the train, at midnight. <b>The ones who turn up have already decided the layout works.</b> Fewer wasted viewings, on both sides.</p>
+          <p class="body">Furnish the empty room in the photograph, with every piece identified and the shops that sell it.</p>
+          <p class="body">Then let them walk the unit in 3D, from a phone, at midnight. <b>The ones who turn up have already decided the layout works.</b></p>
         </div>
-        <ul class="spec plain">
-            <li><span class="t">Furnished from a photograph</span><p class="d">Upload a bare room, get a styled one back.</p></li>
-            <li><span class="t">Pieces identified, with sources</span><p class="d">Not decoration. A list your client can actually buy from.</p></li>
-            <li><span class="t">The unit in 3D</span><p class="d">Built from the floor plan rather than from a camera rig you have to book.</p></li>
-            <li><span class="t">Walkable from anywhere</span><p class="d">No app, no appointment, no travel time spent on a maybe.</p></li>
-        </ul>
+      </div>
+      <div class="detail-visual">
+          <div class="panel">
+            <div class="panel-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: an empty room furnished and shown in 3D">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <g fill="none" stroke="#CFCDC7" stroke-width="1.2">
+    <path d="M66 36 L106 62 M254 36 L214 62 M66 170 L106 144 M254 170 L214 144"/>
+    <rect x="106" y="62" width="108" height="82"/>
+    <path d="M66 36 V170 M254 36 V170 M106 144 H214"/>
+  </g>
+  <g fill="none" stroke="#0E0E0E" stroke-width="1.4">
+    <rect x="112" y="146" width="76" height="22" rx="5"/>
+    <rect x="104" y="172" width="94" height="10" rx="4"/>
+    <rect x="120" y="76" width="32" height="24" rx="2"/>
+    <rect x="204" y="164" width="40" height="9" rx="4"/>
+    <path d="M228 122 V164"/><circle cx="228" cy="115" r="8"/>
+  </g>
+</svg></div>
+          </div>
+          <ul class="ticks" style="margin-top:26px">
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Furnished from a photograph</span><p class="d">Upload a bare room, get a styled one back.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Pieces identified, with sources</span><p class="d">A list your client can actually buy from.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">The unit in 3D</span><p class="d">Built from the floor plan, not a camera rig you book.</p></li>
+          </ul>
       </div>
     </article>
 
-    <article class="entry rv" id="order">
-      <div class="entry-top">
-        <p class="label">05</p>
-        <p class="label">In build</p>
-      </div>
-      <h2 class="entry-name">Order</h2>
-      <p class="entry-line">Both meanings. Bookings taken, and a week that arranges itself.</p>
-      <div class="entry-grid">
+    <article class="detail rv" id="order">
+      <div class="detail-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-order"></use></svg><p class="label">05</p><p class="label" style="margin-left:auto">In build</p></div>
+      <h2>Order</h2>
+      <div class="detail-copy">
+        <p class="lead">Both meanings. Bookings taken, and a week that arranges itself.</p>
         <div>
-          <p class="body">A site under your own name, carrying your listings and your CEA registration number, taking consultations while you are standing in someone else's living room.</p>
-          <p class="body">You are unreachable for most of the working day. <b>This is the part of you that is not.</b> Bookings arrive in one place, and the week is arranged before you get back to your phone.</p>
+          <p class="body">A site under your own name, carrying your listings and your CEA registration number, taking consultations while you are in someone else's living room.</p>
+          <p class="body">You are unreachable for most of the working day. <b>This is the part of you that is not.</b></p>
         </div>
-        <ul class="spec plain">
-            <li><span class="t">A site under your name</span><p class="d">Your listings, your registration number, no vendor's logo on it.</p></li>
-            <li><span class="t">Consultations booked without you</span><p class="d">A calendar that keeps working through a viewing.</p></li>
-            <li><span class="t">One place for the day</span><p class="d">Enquiries and bookings in order rather than across four apps.</p></li>
-        </ul>
+      </div>
+      <div class="detail-visual">
+          <div class="panel">
+            <div class="panel-art"><svg viewBox="0 0 320 200" role="img" aria-label="Illustration: a booking calendar filling itself">
+  <rect x="46" y="18" width="228" height="170" rx="10" fill="#FFFFFF"/>
+  <path d="M46 52 H274" stroke="#E9E8E3" stroke-width="1.4"/>
+  <g fill="#CFCDC7"><circle cx="70" cy="35" r="3"/><circle cx="82" cy="35" r="3"/><circle cx="94" cy="35" r="3"/></g>
+  <g fill="#E9E8E3">
+    <rect x="66" y="70" width="42" height="26" rx="6"/><rect x="116" y="70" width="42" height="26" rx="6"/>
+    <rect x="166" y="70" width="42" height="26" rx="6"/><rect x="216" y="70" width="42" height="26" rx="6"/>
+    <rect x="66" y="106" width="42" height="26" rx="6"/><rect x="116" y="106" width="42" height="26" rx="6"/>
+    <rect x="166" y="106" width="42" height="26" rx="6"/><rect x="216" y="106" width="42" height="26" rx="6"/>
+    <rect x="66" y="142" width="42" height="26" rx="6"/><rect x="116" y="142" width="42" height="26" rx="6"/>
+    <rect x="166" y="142" width="42" height="26" rx="6"/><rect x="216" y="142" width="42" height="26" rx="6"/>
+  </g>
+  <g fill="#0E0E0E">
+    <rect x="116" y="70" width="42" height="26" rx="6"/>
+    <rect x="166" y="106" width="42" height="26" rx="6"/>
+    <rect x="66" y="142" width="42" height="26" rx="6"/>
+  </g>
+</svg></div>
+          </div>
+          <ul class="ticks" style="margin-top:26px">
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">A site under your name</span><p class="d">Your listings, your registration number, no vendor's logo.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">Booked without you</span><p class="d">A calendar that keeps working through a viewing.</p></li>
+              <li><svg class="" aria-hidden="true"><use href="#i-tick"></use></svg><span class="t">One place for the day</span><p class="d">Enquiries and bookings in order, not across four apps.</p></li>
+          </ul>
       </div>
     </article>
-
-  </div>
-
-  <section class="sec tight">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div><p class="label">Next</p></div>
-        <div>
-          <h2>Reading about it is slower than seeing it.</h2>
-          <p class="body first">The workflow page puts each of the five next to the way you do it now, side by side, one loop each.</p>
-          <p style="margin:28px 0 0"><a class="link-cta" href="#workflow">Compare the workflow</a></p>
-        </div>
-      </div>
     </div>
   </section>
-  </section>
 
-  <!-- ============================ WORKFLOW ============================ -->
   <section class="view" id="view-workflow">
-  <section class="masthead">
-    <div class="wrap masthead-in">
-      <p class="label">Workflow</p>
-      <h1>Same Tuesday night. <span class="dim">Two different evenings.</span></h1>
-      <p class="stand">Five pairs. On the left, the way the work gets done now. On the right, the same work with BASIS in it. Each pair runs on a loop, so watch one for nine seconds and you have the whole argument.</p>
-      <p class="stand" style="font-size:.9375rem;color:#7C7A74">The loops are illustrative diagrams rather than recordings of the product, and they carry no property data.</p>
-    </div>
-  </section>
-
-  <div class="wrap">
-    <section class="compare rv" id="wf-details">
-      <div class="compare-head">
-        <p class="label">01 / Details</p>
-        <p class="label">Available now</p>
+    <section class="masthead">
+      <div class="wrap">
+        <p class="label">Workflow</p>
+        <h2>Same Tuesday night. <span class="dim">Two different evenings.</span></h2>
+        <p class="stand">Five pairs. Left is how the work happens now. Right is the same work with BASIS in it. Nine seconds each.</p>
       </div>
+    </section>
+
+    <div class="wrap">
+    <section class="compare rv" id="wf-details">
+      <div class="compare-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-details"></use></svg><p class="label">01</p><p class="label" style="margin-left:auto">Available now</p></div>
       <h3>Details</h3>
-      <p class="compare-line">Eight sections gathered by hand, against eight sections from one address.</p>
+      <p class="compare-line">Eight sources gathered by hand, against eight sections from one address.</p>
       <div class="panes">
         <div class="pane without">
           <div class="pane-top"><h4>Without BASIS</h4><span class="label">Tuesday, evening</span></div>
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Eight sources, one at a time</span><span>open, copy, paste</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list anim a-rv s8">
                   <div class="rowline"><span class="tag">URA</span><span class="ln" style="flex:1"></span></div>
                   <div class="rowline"><span class="tag">HDB</span><span class="ln" style="flex:1"></span></div>
@@ -838,18 +973,15 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">You open the sources one by one and retype what you find. The deck exists only once the last tab is closed.</p>
+          <p class="cap">You open the sources one by one and retype what you find.</p>
         </div>
         <div class="pane with">
           <div class="pane-top"><h4>With BASIS</h4><span class="label">Tuesday, evening</span></div>
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>One address</span><span>eight sections back</span></div>
-              <div class="stage-body top">
-                <div class="addr">
-                  <span class="ln anim a-type" style="height:6px"></span>
-                  <span class="caret anim a-caret"></span>
-                </div>
+              <div class="stage-body">
+                <div class="addr"><span class="ln anim a-type" style="height:6px"></span><span class="caret anim a-caret"></span></div>
                 <div class="stage-list anim a-rv-fast s8">
                   <div class="rowline"><span class="tag">URA</span><span class="ln" style="flex:1"></span></div>
                   <div class="rowline"><span class="tag">HDB</span><span class="ln" style="flex:1"></span></div>
@@ -863,16 +995,13 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">You type the address once. The eight sections come back sourced, each figure carrying the number of transactions behind it.</p>
+          <p class="cap">You type the address once. Eight sections come back sourced.</p>
         </div>
       </div>
     </section>
 
     <section class="compare rv" id="wf-interest">
-      <div class="compare-head">
-        <p class="label">02 / Interest</p>
-        <p class="label">In build</p>
-      </div>
+      <div class="compare-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-interest"></use></svg><p class="label">02</p><p class="label" style="margin-left:auto">In build</p></div>
       <h3>Interest</h3>
       <p class="compare-line">A guess that keeps moving, against a number that does not.</p>
       <div class="panes">
@@ -881,7 +1010,7 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Which section landed</span><span>a guess that keeps moving</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list">
                   <span class="marker anim a-wander"></span>
                   <div class="rowline"><span class="tag">Property</span><span class="bar-t"></span><span class="qm">?</span></div>
@@ -896,14 +1025,14 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">He mentioned schools, so you build Monday around schools. You are working from what he said, in a room, while being polite.</p>
+          <p class="cap">He mentioned schools, so you build Monday around schools.</p>
         </div>
         <div class="pane with">
           <div class="pane-top"><h4>With BASIS</h4><span class="label">After the viewing</span></div>
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Which section landed</span><span>the link says</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list">
                   <div class="rowline"><span class="tag">Property</span><span class="bar-t"><i class="bar-f anim a-grow" style="--w:18%"></i></span><span class="qm"></span></div>
                   <div class="rowline"><span class="tag">Prices</span><span class="bar-t"><i class="bar-f anim a-grow" style="--w:27%"></i></span><span class="qm"></span></div>
@@ -917,16 +1046,13 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">Costs and financing, eleven opens, forwarded twice. An illustrative session. You open Monday with the section he chose.</p>
+          <p class="cap">Costs and financing, eleven opens, forwarded twice. An illustrative session.</p>
         </div>
       </div>
     </section>
 
     <section class="compare rv" id="wf-retention">
-      <div class="compare-head">
-        <p class="label">03 / Retention</p>
-        <p class="label">In build</p>
-      </div>
+      <div class="compare-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-retention"></use></svg><p class="label">03</p><p class="label" style="margin-left:auto">In build</p></div>
       <h3>Retention</h3>
       <p class="compare-line">A book that goes quiet, against a reason to call on the day there is one.</p>
       <div class="panes">
@@ -935,7 +1061,7 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Your book</span><span>no obvious day to call</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list anim a-fade">
                   <div class="rowline"><span class="tag">CLIENT A</span><span class="ln" style="flex:1"></span></div>
                   <div class="rowline"><span class="tag">CLIENT B</span><span class="ln" style="flex:1"></span></div>
@@ -948,17 +1074,15 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">Nothing goes wrong. They just stop hearing from you, because there was never a day that obviously called for it.</p>
+          <p class="cap">Nothing goes wrong. They just stop hearing from you.</p>
         </div>
         <div class="pane with">
           <div class="pane-top"><h4>With BASIS</h4><span class="label">The morning it moves</span></div>
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Something moves on the record</span><span>routed, grouped, drafted</span></div>
-              <div class="stage-body top">
-                <div class="rowline" style="margin-bottom:14px">
-                  <span class="tag">RECORD</span><span class="ln hi anim a-pulse" style="flex:1"></span>
-                </div>
+              <div class="stage-body">
+                <div class="rowline" style="margin-bottom:14px"><span class="tag">RECORD</span><span class="ln hi anim a-pulse" style="flex:1"></span></div>
                 <div class="stage-list anim a-rv-fast s3">
                   <div class="rowline"><span class="tag">GROUP A</span><span class="ln" style="flex:1"></span><span class="chip">Drafted</span></div>
                   <div class="rowline"><span class="tag">GROUP B</span><span class="ln" style="flex:1"></span><span class="chip">Drafted</span></div>
@@ -967,16 +1091,13 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">The announcement is read at source, matched against your own clients, and a message drafted per group. You edit and send.</p>
+          <p class="cap">Read at source, matched against your clients, drafted per group. You edit and send.</p>
         </div>
       </div>
     </section>
 
     <section class="compare rv" id="wf-vision">
-      <div class="compare-head">
-        <p class="label">04 / Vision</p>
-        <p class="label">In build</p>
-      </div>
+      <div class="compare-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-vision"></use></svg><p class="label">04</p><p class="label" style="margin-left:auto">In build</p></div>
       <h3>Vision</h3>
       <p class="compare-line">A bare room they have to imagine, against one they can already see.</p>
       <div class="panes">
@@ -986,17 +1107,16 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
             <div class="stage-in">
               <div class="stage-hd"><span>An empty room</span><span>a buyer imagining alone</span></div>
               <div class="stage-body">
-                <svg viewBox="0 0 260 182" role="img" aria-label="Diagram: an empty room in outline with a question mark in the middle">
-                  <path class="st-rule" d="M14 24 L74 56 M246 24 L186 56 M14 152 L74 118 M246 152 L186 118"/>
-                  <rect class="st-rule" x="74" y="56" width="112" height="62"/>
-                  <path class="st-rule" d="M14 24 L14 152 M246 24 L246 152 M74 118 L186 118"/>
-                  <text class="anim a-pulse" x="118" y="100" style="font-size:26px;fill:#9C9A94;font-family:var(--mono)">?</text>
-                  <text class="st-txt" x="14" y="176">EMPTY</text>
+                <svg viewBox="0 0 260 182" role="img" aria-label="Diagram: an empty room with a question mark">
+                  <path class="st-rule" d="M14 26 L74 58 M246 26 L186 58 M14 154 L74 120 M246 154 L186 120"/>
+                  <rect class="st-rule" x="74" y="58" width="112" height="62"/>
+                  <path class="st-rule" d="M14 26 L14 154 M246 26 L246 154 M74 120 L186 120"/>
+                  <text class="anim a-pulse" x="118" y="102" style="font-size:26px;fill:#B4B2AC">?</text>
                 </svg>
               </div>
             </div>
           </div>
-          <p class="cap">They are standing in a bare room doing the imagining on the spot, and most people are not good at it.</p>
+          <p class="cap">They are doing the imagining on the spot, and most people are not good at it.</p>
         </div>
         <div class="pane with">
           <div class="pane-top"><h4>With BASIS</h4><span class="label">Before the viewing</span></div>
@@ -1006,31 +1126,27 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               <div class="stage-body">
                 <svg viewBox="0 0 260 182" role="img" aria-label="Diagram: the same room with furniture drawn in">
                   <g class="anim a-spin">
-                  <path class="st-rule" d="M14 24 L74 56 M246 24 L186 56 M14 152 L74 118 M246 152 L186 118"/>
-                  <rect class="st-rule" x="74" y="56" width="112" height="62"/>
-                  <path class="st-rule" d="M14 24 L14 152 M246 24 L246 152 M74 118 L186 118"/>
-                    <rect class="st-line anim a-draw" style="--len:184" x="86" y="120" width="70" height="22" rx="3"/>
-                    <rect class="st-line anim a-draw" style="--len:200;animation-delay:.25s" x="78" y="148" width="90" height="10" rx="2"/>
-                    <rect class="st-line anim a-draw" style="--len:96;animation-delay:.5s" x="176" y="140" width="40" height="8" rx="2"/>
-                    <rect class="st-line anim a-draw" style="--len:88;animation-delay:.75s" x="96" y="66" width="26" height="18"/>
-                    <path class="st-line anim a-draw" style="--len:46;animation-delay:1s" d="M206 96 L206 138"/>
-                    <circle class="st-line anim a-draw" style="--len:52;animation-delay:1s" cx="206" cy="90" r="8"/>
+                  <path class="st-rule" d="M14 26 L74 58 M246 26 L186 58 M14 154 L74 120 M246 154 L186 120"/>
+                  <rect class="st-rule" x="74" y="58" width="112" height="62"/>
+                  <path class="st-rule" d="M14 26 L14 154 M246 26 L246 154 M74 120 L186 120"/>
+                    <rect class="st-line anim a-draw" style="--len:184" x="86" y="122" width="70" height="22" rx="4"/>
+                    <rect class="st-line anim a-draw" style="--len:200;animation-delay:.25s" x="78" y="150" width="90" height="10" rx="4"/>
+                    <rect class="st-line anim a-draw" style="--len:96;animation-delay:.5s" x="176" y="142" width="40" height="8" rx="4"/>
+                    <rect class="st-line anim a-draw" style="--len:88;animation-delay:.75s" x="96" y="68" width="26" height="18" rx="2"/>
+                    <path class="st-line anim a-draw" style="--len:46;animation-delay:1s" d="M206 98 L206 140"/>
+                    <circle class="st-line anim a-draw" style="--len:52;animation-delay:1s" cx="206" cy="92" r="8"/>
                   </g>
-                  <text class="st-txt" x="14" y="176">FURNISHED, AND IN 3D</text>
                 </svg>
               </div>
             </div>
           </div>
-          <p class="cap">The room is furnished in the photograph, every piece identified, and the unit is walkable in 3D before anyone travels.</p>
+          <p class="cap">Furnished in the photograph, every piece identified, and walkable in 3D.</p>
         </div>
       </div>
     </section>
 
     <section class="compare rv" id="wf-order">
-      <div class="compare-head">
-        <p class="label">05 / Order</p>
-        <p class="label">In build</p>
-      </div>
+      <div class="compare-head"><svg class="detail-ico" aria-hidden="true"><use href="#i-order"></use></svg><p class="label">05</p><p class="label" style="margin-left:auto">In build</p></div>
       <h3>Order</h3>
       <p class="compare-line">Missed calls stacking up, against a week that arranges itself.</p>
       <div class="panes">
@@ -1039,7 +1155,7 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Two hours unreachable</span><span>and it stacks up</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list anim a-rv s4">
                   <div class="rowline"><span class="tag">MISSED</span><span class="ln" style="flex:1"></span></div>
                   <div class="rowline"><span class="tag">MISSED</span><span class="ln" style="flex:1"></span></div>
@@ -1049,14 +1165,14 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">Four people wanted you during the two hours your phone was face down. Some of them call the next name on the list.</p>
+          <p class="cap">Four people wanted you while your phone was face down.</p>
         </div>
         <div class="pane with">
           <div class="pane-top"><h4>With BASIS</h4><span class="label">While you are at a viewing</span></div>
           <div class="stage">
             <div class="stage-in">
               <div class="stage-hd"><span>Your site keeps working</span><span>consultations booked</span></div>
-              <div class="stage-body top">
+              <div class="stage-body">
                 <div class="stage-list anim a-rv-fast s3">
                   <div class="slot"><span class="tag">10:00</span><span class="cell"><i></i></span></div>
                   <div class="slot"><span class="tag">14:30</span><span class="cell"><i></i></span></div>
@@ -1066,121 +1182,91 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
               </div>
             </div>
           </div>
-          <p class="cap">The site under your name takes the booking, and the week is arranged before you get back to your phone.</p>
+          <p class="cap">The site under your name takes the booking. The week arranges itself.</p>
         </div>
       </div>
     </section>
-  </div>
-
-  <section class="sec tight">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <div><p class="label">In full</p></div>
-        <div>
-          <h2>Each of the five, written out.</h2>
-          <p class="body first">What sits in the eight sections, how the link tracking works, what gets drafted for whom, and what is live today.</p>
-          <p style="margin:28px 0 0"><a class="link-cta" href="#five">Read the five</a></p>
-        </div>
-      </div>
     </div>
-  </section>
+
+    <section class="sec">
+      <div class="wrap" style="text-align:center">
+        <h2 class="sec-title" style="margin:0 auto;max-width:18ch">Each of the five, written out.</h2>
+        <div class="hero-acts" style="margin-top:26px"><a class="btn dark" href="#five">Read the five</a></div>
+      </div>
+    </section>
   </section>
 
-  <!-- ============================ PRICING ============================ -->
   <section class="view" id="view-pricing">
-  <section class="masthead">
-    <div class="wrap masthead-in">
-      <p class="label">Pricing</p>
-      <h1>Three tiers. <span class="dim">No asterisks.</span></h1>
-      <p class="stand">Start free and move up when the volume justifies it. Names and prices for the upper two are still being set, so they sit here as open slots rather than as something invented.</p>
-    </div>
+    <section class="masthead">
+      <div class="wrap">
+        <p class="label">Pricing</p>
+        <h2>Three tiers. <span class="dim">No asterisks.</span></h2>
+        <p class="stand">Start free. Names and prices for the upper two are still being set, so they sit here as open slots.</p>
+      </div>
+    </section>
+
+    <section class="sec">
+      <div class="wrap">
+        <div class="tiers rv">
+          <div class="tier">
+            <p class="label">Tier 01</p>
+            <h3>Free</h3>
+            <p class="price">No card, no trial clock</p>
+            <ul>
+              <li>Limited details each month</li>
+              <li>All eight sections, fully sourced</li>
+              <li>Sources and gaps included</li>
+            </ul>
+            <a class="btn plain" href="#access">Get early access</a>
+          </div>
+          <div class="tier feature">
+            <p class="label">Tier 02</p>
+            <h3 data-slot>Name pending</h3>
+            <p class="price">Price pending</p>
+            <ul>
+              <li>Unlimited details</li>
+              <li>Interest, limited volume</li>
+              <li>Vision, limited volume</li>
+              <li>Retention</li>
+            </ul>
+            <a class="btn" href="#access">Get early access</a>
+          </div>
+          <div class="tier">
+            <p class="label">Tier 03</p>
+            <h3 data-slot>Name pending</h3>
+            <p class="price">Price pending</p>
+            <ul>
+              <li>Everything in tier 02</li>
+              <li>Interest, unlimited</li>
+              <li>Vision, unlimited</li>
+              <li>Order, your own site</li>
+              <li>Client database filtering</li>
+            </ul>
+            <a class="btn plain" href="#access">Get early access</a>
+          </div>
+        </div>
+
+        <div class="rv" style="text-align:center;margin-top:clamp(48px,7vw,90px)">
+          <h2 class="sec-title" style="margin:0 auto;max-width:20ch">Only Details ships today.</h2>
+          <p class="sub" style="margin:18px auto 0;color:var(--muted);max-width:52ch">The other four are listed so you can see where a tier is going, not to bill you for something that is not open yet.</p>
+        </div>
+      </div>
+    </section>
   </section>
 
-  <section class="sec">
+  <section class="sec close-sec" id="access">
     <div class="wrap">
-      <div class="tiers rv">
-        <div class="tier">
-          <p class="label">Tier 01</p>
-          <h3>Free</h3>
-          <p class="price">No card, no trial clock</p>
-          <ul>
-            <li>Limited details each month</li>
-            <li>All eight sections, fully sourced</li>
-            <li>Sources and gaps included</li>
-          </ul>
-          <a class="link-cta" href="#access">Get early access</a>
-        </div>
-        <div class="tier">
-          <p class="label">Tier 02</p>
-          <h3 data-slot>Name pending</h3>
-          <p class="price">Price pending</p>
-          <ul>
-            <li>Unlimited details</li>
-            <li>Interest, limited volume</li>
-            <li>Vision, limited volume</li>
-            <li>Retention</li>
-          </ul>
-          <a class="link-cta" href="#access">Get early access</a>
-        </div>
-        <div class="tier">
-          <p class="label">Tier 03</p>
-          <h3 data-slot>Name pending</h3>
-          <p class="price">Price pending</p>
-          <ul>
-            <li>Everything in tier 02</li>
-            <li>Interest, unlimited</li>
-            <li>Vision, unlimited</li>
-            <li>Order, your own site</li>
-            <li>Client database filtering</li>
-          </ul>
-          <a class="link-cta" href="#access">Get early access</a>
-        </div>
-      </div>
-
-      <div class="sec-head rv" style="margin-top:clamp(64px,9vw,120px)">
-        <div><p class="label">What you are paying for</p></div>
-        <div>
-          <h2>Only Details ships today.</h2>
-          <p class="body first">Interest, retention, vision and order are in build. They are listed above so you can see where a tier is going, not to bill you for something that is not open yet.</p>
-          <p class="body">We will tell you the day each one opens. Until then, a tier costs what its live features are worth.</p>
-          <p style="margin:28px 0 0"><a class="link-cta" href="#workflow">See the difference</a></p>
-        </div>
-      </div>
-    </div>
-  </section>
-  </section>
-
-  <!-- ============================ EARLY ACCESS, on every view ========= -->
-  <section class="sec close-sec on-dark" id="access">
-    <div class="wrap">
-      <div class="sec-head">
-        <div><p class="label">Early access</p></div>
-        <div>
-          <h2>Get in before the next release.</h2>
-          <p class="body first">Tell us where you work. We let people in as capacity opens, starting with agents who list often.</p>
-        </div>
-      </div>
-
+      <p class="label">Early access</p>
+      <h2>Get in before the next release.</h2>
+      <p class="sub">Tell us where you work. We let people in as capacity opens, starting with agents who list often.</p>
       <form class="form" id="waitlistForm">
-        <div class="field">
-          <label for="name">Name</label>
-          <input id="name" name="name" type="text" autocomplete="name" required>
-        </div>
-        <div class="field">
-          <label for="email">Work email</label>
-          <input id="email" name="email" type="email" autocomplete="email" required>
-        </div>
-        <div class="field">
-          <label for="agency">Agency</label>
-          <input id="agency" name="agency" type="text" autocomplete="organization">
-        </div>
-        <div class="field">
-          <label for="cea">CEA registration number</label>
-          <input id="cea" name="cea" type="text" inputmode="latin">
-        </div>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+        <div class="field"><label for="email">Work email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+        <div class="field"><label for="agency">Agency</label><input id="agency" name="agency" type="text" autocomplete="organization"></div>
+        <div class="field"><label for="cea">CEA number</label><input id="cea" name="cea" type="text" inputmode="latin"></div>
         <div class="form-foot">
-          <button class="submit" type="submit">Request access</button>
-          <p class="formnote" id="formnote">Not wired to a handler yet. Point it at your backend to start collecting.</p>
+          <button class="btn" type="submit">Request access</button>
+          <p class="formnote" id="formnote">Not wired to a handler yet.</p>
         </div>
       </form>
     </div>
@@ -1204,52 +1290,47 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
 </footer>
 
 <script>
-/* BASIS. Shared behaviour. No dependencies. */
 (function () {
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* nav flips from dark to bone once you clear the masthead */
   var nav = document.getElementById('nav');
+
   window.paintNav = function () {
-    var masthead = document.querySelector('.view.is-active .masthead');
+    var top = document.querySelector('.view.is-active .hero, .view.is-active .masthead');
     var y = window.scrollY || window.pageYOffset;
-    var edge = masthead ? masthead.offsetHeight - 80 : 0;
-    nav.dataset.mode = y > edge ? 'light' : 'dark';
+    nav.dataset.mode = (top && y < top.offsetHeight - 70) ? 'dark' : 'light';
     nav.classList.toggle('stuck', y > 8);
   };
   paintNav();
   window.addEventListener('scroll', paintNav, { passive: true });
   window.addEventListener('resize', paintNav);
 
-  /* reveal on scroll */
-  var items = document.querySelectorAll('.rv');
-  if (reduce || !('IntersectionObserver' in window)) {
-    Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
-  } else {
-    var rio = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
-      });
-    }, { threshold: .08, rootMargin: '0px 0px -6% 0px' });
-    Array.prototype.forEach.call(items, function (el) { rio.observe(el); });
+  function reveal(root) {
+    var items = (root || document).querySelectorAll('.rv:not(.in)');
+    if (reduce || !('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(items, function (el) { el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: .06, rootMargin: '0px 0px -5% 0px' });
+    Array.prototype.forEach.call(items, function (el) { io.observe(el); });
   }
+  window.reveal = reveal;
+  reveal();
 
-  /* workflow loops run only while their pair is on screen */
   var pairs = document.querySelectorAll('.compare');
   if (pairs.length) {
     if (!('IntersectionObserver' in window)) {
       Array.prototype.forEach.call(pairs, function (el) { el.classList.add('live'); });
     } else {
-      var cio = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
-      }, { threshold: .18 });
+      var cio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { e.target.classList.toggle('live', e.isIntersecting); });
+      }, { threshold: .15 });
       Array.prototype.forEach.call(pairs, function (el) { cio.observe(el); });
     }
   }
 
-  /* the illustrative session readout */
-  var readout = document.getElementById('readout');
-  var play = document.getElementById('play');
+  var readout = document.getElementById('readout'), play = document.getElementById('play');
   if (readout && play) {
     var run = function () {
       readout.classList.add('played');
@@ -1259,64 +1340,55 @@ footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
     play.addEventListener('click', run);
     if (reduce) { run(); }
     else if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (e) { if (e.isIntersecting) { run(); io.disconnect(); } });
+      var io2 = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { run(); io2.disconnect(); } });
       }, { threshold: .3 });
-      io.observe(readout);
+      io2.observe(readout);
     }
   }
 
-  /* the form has no handler yet */
   var form = document.getElementById('waitlistForm');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var note = document.getElementById('formnote');
-      if (note) {
-        note.textContent = 'No handler connected yet. Point this form at your backend or form service to start collecting.';
-      }
+      var n = document.getElementById('formnote');
+      if (n) { n.textContent = 'No handler connected yet. Point this form at your backend to start collecting.'; }
     });
   }
 })();
 
-
-/* ---------------- router ---------------- */
+/* router: four screens, one file */
 (function () {
   var VIEWS = ['home', 'five', 'workflow', 'pricing'];
-  var views = {};
-  VIEWS.forEach(function (v) { views[v] = document.getElementById('view-' + v); });
-  var navLinks = document.querySelectorAll('[data-view]');
-  var reduceScroll = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var TITLES = { home: 'BASIS', five: 'The five. BASIS.', workflow: 'Workflow. BASIS.', pricing: 'Pricing. BASIS.' };
+  var links = document.querySelectorAll('[data-view]');
+  var smooth = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  function parse() {
+  function show(first) {
     var raw = (location.hash || '#home').replace(/^#/, '');
     var bits = raw.split('/');
-    var view = VIEWS.indexOf(bits[0]) > -1 ? bits[0] : (bits[0] === 'access' ? 'home' : 'home');
-    return { view: view, anchor: bits[1] || (bits[0] === 'access' ? 'access' : ''), raw: raw };
-  }
+    var view = VIEWS.indexOf(bits[0]) > -1 ? bits[0] : 'home';
+    var anchor = bits[1] || (VIEWS.indexOf(bits[0]) === -1 ? bits[0] : '');
 
-  function show(keepScroll) {
-    var r = parse();
-    VIEWS.forEach(function (v) { views[v].classList.toggle('is-active', v === r.view); });
-    Array.prototype.forEach.call(navLinks, function (a) {
-      if (a.dataset.view === r.view) { a.setAttribute('aria-current', 'page'); }
+    VIEWS.forEach(function (v) {
+      document.getElementById('view-' + v).classList.toggle('is-active', v === view);
+    });
+    Array.prototype.forEach.call(links, function (a) {
+      if (a.dataset.view === view) { a.setAttribute('aria-current', 'page'); }
       else { a.removeAttribute('aria-current'); }
     });
-    document.title = ({
-      home: 'BASIS',
-      five: 'The five. BASIS.',
-      workflow: 'Workflow. BASIS.',
-      pricing: 'Pricing. BASIS.'
-    })[r.view];
+    document.title = TITLES[view];
+    reveal();
 
-    if (r.anchor) {
-      var el = document.getElementById(r.anchor);
+    if (anchor) {
+      var el = document.getElementById(anchor) || document.getElementById('wf-' + anchor);
       if (el) {
-        el.scrollIntoView({ behavior: reduceScroll ? 'auto' : 'smooth', block: 'start' });
+        el.scrollIntoView({ behavior: smooth && !first ? 'smooth' : 'auto', block: 'start' });
+        setTimeout(paintNav, 60);
         return;
       }
     }
-    if (!keepScroll) { window.scrollTo(0, 0); }
+    if (!first) { window.scrollTo(0, 0); }
     paintNav();
   }
 
