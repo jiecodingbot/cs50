@@ -4,405 +4,291 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>BASIS</title>
-<meta name="description" content="BASIS handles the preparation work behind property agency in Singapore. Decks built from an address, links that show you what a client reads, news sorted by who it hits.">
+<meta name="description" content="BASIS handles the preparation behind property agency in Singapore. Details, interest, retention, vision, order.">
 <meta property="og:title" content="BASIS">
 <meta property="og:description" content="You're good with people. Machines are good with numbers. So stop doing both.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#FAFAFB;
-  --card:#FFFFFF;
-  --ink:#0B0E14;
-  --ink-soft:#59626F;
-  --ink-faint:#8A93A1;
-  --rule:#E3E6EB;
-  --rule-soft:#EDEFF3;
-  --blue:#1B4FE0;
-  --blue-lit:#5B84FF;
-  --blue-soft:#EAEFFD;
-  --dark:#0B0E14;
-  --dark-2:#12161F;
-  --dark-rule:#222835;
-  --dark-text:#98A2B3;
-  --amber:#7E5B0C;
-  --amber-soft:#FAF0D9;
-  --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --paper:#F2F1ED;
+  --white:#FBFBFA;
+  --ink:#101010;
+  --ink-deep:#0A0A0A;
+  --muted:#6F6D68;
+  --faint:#78766F;
+  --rule:#DCDAD4;
+  --rule-soft:#E6E4DF;
+  --on-ink:#EDEBE6;
+  --on-ink-muted:#93918B;
+  --on-ink-rule:#262626;
+
+  --sans:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,"SF Mono",Menlo,monospace;
-  --gut:clamp(20px,5vw,64px);
-  --wide:1180px;
-  --nav-h:64px;
+
+  --gut:clamp(22px,6vw,88px);
+  --wide:1340px;
+  --nav-h:70px;
 }
 
 *{box-sizing:border-box;}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
 body{
-  margin:0;
-  background:var(--paper);
-  color:var(--ink);
-  font-family:var(--sans);
-  font-size:17px;
-  line-height:1.62;
-  -webkit-font-smoothing:antialiased;
-  text-rendering:optimizeLegibility;
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:var(--sans);font-size:17px;line-height:1.58;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  font-feature-settings:"ss01" 1;
 }
-img,svg{max-width:100%;}
 a{color:inherit;}
-:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:2px;}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;}
+img,svg{max-width:100%;}
+:focus-visible{outline:1px solid currentColor;outline-offset:4px;}
 .wrap{max-width:var(--wide);margin:0 auto;padding-left:var(--gut);padding-right:var(--gut);}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums;}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 
-/* ============ nav ============ */
+.label{
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0;
+}
+
+/* ---------------- nav ---------------- */
 .nav{
-  position:fixed;top:0;left:0;right:0;z-index:60;
-  height:var(--nav-h);
-  transition:background .3s ease,border-color .3s ease,backdrop-filter .3s ease;
+  position:fixed;top:0;left:0;right:0;z-index:70;height:var(--nav-h);
+  transition:background .35s ease,color .35s ease,border-color .35s ease;
   border-bottom:1px solid transparent;
 }
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:20px;}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:var(--nav-h);gap:24px;}
 .mark{
-  font-weight:600;letter-spacing:.14em;font-size:.9375rem;
-  text-decoration:none;display:inline-flex;align-items:center;gap:9px;
+  font-size:.8125rem;font-weight:500;letter-spacing:.34em;
+  text-decoration:none;text-transform:uppercase;
 }
-.mark i{
-  width:9px;height:9px;border-radius:2px;background:var(--blue);
-  display:inline-block;transform:rotate(45deg);
-}
-.nav-links{display:none;gap:30px;font-size:.9375rem;}
-.nav-links a{text-decoration:none;opacity:.72;transition:opacity .2s;}
+.nav-links{display:none;gap:34px;font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;}
+.nav-links a{text-decoration:none;opacity:.6;transition:opacity .25s;}
 .nav-links a:hover{opacity:1;}
 .nav-cta{
-  font-size:.875rem;font-weight:500;text-decoration:none;white-space:nowrap;
-  padding:9px 17px;border-radius:100px;border:1px solid transparent;
-  transition:background .25s,color .25s,border-color .25s;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;padding-bottom:4px;border-bottom:1px solid currentColor;white-space:nowrap;
+  opacity:.9;transition:opacity .25s;
 }
-@media(min-width:900px){.nav-links{display:flex;}}
+.nav-cta:hover{opacity:1;}
+@media(min-width:940px){.nav-links{display:flex;}}
+.nav[data-mode="dark"]{color:var(--on-ink);}
+.nav[data-mode="dark"].stuck{background:rgba(10,10,10,.9);backdrop-filter:blur(14px);border-bottom-color:var(--on-ink-rule);}
+.nav[data-mode="light"]{color:var(--ink);background:rgba(242,241,237,.9);backdrop-filter:blur(14px);border-bottom-color:var(--rule);}
 
-/* nav over the dark banner */
-.nav[data-mode="dark"]{color:#fff;}
-.nav[data-mode="dark"] .nav-cta{background:#fff;color:var(--dark);}
-.nav[data-mode="dark"] .nav-cta:hover{background:var(--blue-lit);color:#fff;}
-.nav[data-mode="dark"].stuck{background:rgba(11,14,20,.82);backdrop-filter:saturate(150%) blur(12px);border-bottom-color:var(--dark-rule);}
-/* nav over light page */
-.nav[data-mode="light"]{
-  color:var(--ink);
-  background:rgba(250,250,251,.86);
-  backdrop-filter:saturate(150%) blur(12px);
-  border-bottom-color:var(--rule);
-}
-.nav[data-mode="light"] .nav-cta{background:var(--ink);color:#fff;}
-.nav[data-mode="light"] .nav-cta:hover{background:var(--blue);}
-
-/* ============ banner ============ */
+/* ---------------- banner ---------------- */
 .banner{
-  position:relative;overflow:hidden;
-  background:var(--dark);color:#EEF1F6;
-  padding:calc(var(--nav-h) + clamp(56px,10vw,110px)) 0 clamp(60px,9vw,104px);
-  isolation:isolate;
+  background:var(--ink-deep);color:var(--on-ink);
+  padding:calc(var(--nav-h) + clamp(58px,9vw,104px)) 0 clamp(48px,7vw,76px);
+  min-height:min(100svh,960px);display:flex;align-items:center;
 }
-.banner::before{
-  content:"";position:absolute;inset:0;z-index:-2;
-  background:
-    radial-gradient(900px 520px at 78% -8%,rgba(27,79,224,.34),transparent 62%),
-    radial-gradient(680px 420px at 6% 104%,rgba(91,132,255,.14),transparent 60%);
+.banner-in{width:100%;}
+.banner .label{color:var(--on-ink-muted);}
+h1{
+  font-size:clamp(2.2rem,5vw,4.4rem);
+  line-height:1;letter-spacing:-.042em;font-weight:500;
+  margin:clamp(24px,3.4vw,40px) 0 0;max-width:19ch;
 }
-.banner::after{
-  content:"";position:absolute;inset:0;z-index:-1;
-  background-image:
-    linear-gradient(to right,rgba(255,255,255,.035) 1px,transparent 1px),
-    linear-gradient(to bottom,rgba(255,255,255,.035) 1px,transparent 1px);
-  background-size:64px 64px;
-  -webkit-mask-image:radial-gradient(80% 70% at 50% 30%,#000 30%,transparent 100%);
-          mask-image:radial-gradient(80% 70% at 50% 30%,#000 30%,transparent 100%);
-}
-.eyebrow{
-  font-family:var(--mono);font-size:.75rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--blue-lit);margin:0 0 26px;
-  display:flex;align-items:center;gap:12px;
-}
-.eyebrow::after{content:"";height:1px;flex:1;max-width:120px;background:linear-gradient(to right,rgba(91,132,255,.55),transparent);}
-@media(max-width:640px){.eyebrow{letter-spacing:.12em;font-size:.6875rem;}.eyebrow::after{display:none;}}
-
-.banner-grid{display:grid;gap:clamp(30px,4.5vw,56px);align-items:end;}
-@media(min-width:1000px){
-  .banner-grid{grid-template-columns:minmax(0,1.06fr) minmax(0,.94fr);gap:64px;}
-}
-.banner h1{
-  font-size:clamp(2.3rem,5.4vw,3.9rem);
-  line-height:1.03;letter-spacing:-.038em;font-weight:600;
-  margin:0;max-width:14ch;
-}
-.banner h1 .b2{display:block;color:var(--blue-lit);}
+h1 .dim{color:#6A6964;}
 .stop{
-  font-size:clamp(1.375rem,3.1vw,2rem);
-  line-height:1.2;letter-spacing:-.028em;font-weight:500;
-  margin:22px 0 0;color:#fff;
+  font-size:clamp(1.1875rem,2.2vw,1.625rem);
+  line-height:1.15;letter-spacing:-.03em;font-weight:400;
+  margin:clamp(18px,2.4vw,26px) 0 0;color:var(--on-ink);
 }
-.hook{max-width:56ch;}
-@media(min-width:1000px){.hook{padding-bottom:6px;}}
-.hook p{
-  margin:0 0 18px;color:#B8C0CD;
-  font-size:clamp(1rem,1.5vw,1.125rem);line-height:1.62;
+.banner-grid{
+  display:grid;gap:clamp(34px,5vw,60px);
+  margin-top:clamp(38px,4.6vw,58px);
+  padding-top:clamp(28px,3.4vw,38px);
+  border-top:1px solid var(--on-ink-rule);
 }
+@media(min-width:900px){.banner-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:clamp(48px,7vw,110px);}}
+.hook p{margin:0 0 16px;color:#9A9893;font-size:1.0625rem;line-height:1.62;max-width:58ch;}
 .hook p:last-child{margin-bottom:0;}
-.hook .lift{color:#EEF1F6;}
+.hook .lift{color:var(--on-ink);}
 .hook .close{
-  color:#fff;font-weight:500;
-  font-size:clamp(1.0625rem,1.8vw,1.25rem);
-  letter-spacing:-.01em;margin-top:26px;
+  margin-top:26px;color:#fff;font-size:1.25rem;letter-spacing:-.02em;
 }
-.hook .close b{font-weight:600;letter-spacing:.06em;}
+.hook .close b{font-weight:500;letter-spacing:.2em;}
+.banner-side{display:flex;flex-direction:column;gap:clamp(30px,4vw,46px);}
+.acts{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;}
+.link-cta{
+  font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  text-decoration:none;padding-bottom:6px;border-bottom:1px solid currentColor;
+  transition:opacity .25s;
+}
+.link-cta.quiet{color:var(--on-ink-muted);}
+.link-cta:hover{opacity:.65;}
+.src{
+  display:flex;flex-wrap:wrap;gap:8px 22px;
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;color:#7C7A74;
+}
+.src b{font-weight:400;color:var(--on-ink-muted);letter-spacing:.14em;text-transform:uppercase;}
 
-.banner-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(30px,4vw,40px);}
-.btn{
-  font:inherit;font-size:1rem;font-weight:500;text-decoration:none;
-  padding:13px 24px;border-radius:100px;display:inline-block;cursor:pointer;
-  border:1px solid var(--ink);background:var(--ink);color:#fff;
-  transition:transform .18s ease,background .2s,border-color .2s,color .2s;
-}
-.btn:hover{transform:translateY(-1px);}
-.btn.ghost{background:transparent;color:var(--ink);border-color:var(--rule);}
-.btn.ghost:hover{border-color:var(--ink);}
-.btn.light{background:#fff;color:var(--dark);border-color:#fff;}
-.btn.light:hover{background:var(--blue-lit);border-color:var(--blue-lit);color:#fff;}
-.btn.outline-light{background:transparent;color:#fff;border-color:rgba(255,255,255,.28);}
-.btn.outline-light:hover{border-color:#fff;}
-
-.sources{
-  margin-top:clamp(44px,7vw,72px);padding-top:20px;
-  border-top:1px solid rgba(255,255,255,.12);
-  display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;
-  font-family:var(--mono);font-size:.8125rem;color:var(--dark-text);
-}
-.sources b{font-weight:400;color:#EEF1F6;}
-.sources span{color:var(--dark-text);}
-
-/* ============ generic section ============ */
-.sec{padding:clamp(64px,10vw,120px) 0;border-top:1px solid var(--rule);}
-.sec.plain{border-top:0;}
-.kicker{
-  font-family:var(--mono);font-size:.75rem;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--ink-faint);margin:0 0 18px;
-}
+/* ---------------- sections ---------------- */
+.sec{padding:clamp(78px,12vw,168px) 0;}
+.sec-head{display:grid;gap:clamp(26px,4vw,52px);}
+@media(min-width:900px){.sec-head{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:clamp(48px,7vw,110px);}}
 h2{
-  font-size:clamp(1.85rem,4.3vw,2.85rem);
-  line-height:1.08;letter-spacing:-.032em;font-weight:600;
-  margin:0;max-width:20ch;
+  font-size:clamp(1.9rem,4.4vw,3.35rem);
+  line-height:1.02;letter-spacing:-.04em;font-weight:500;
+  margin:20px 0 0;max-width:18ch;
 }
-.lede{font-size:clamp(1.0625rem,1.7vw,1.1875rem);color:var(--ink-soft);max-width:62ch;margin:22px 0 0;}
-.lede b{color:var(--ink);font-weight:500;}
-.disclaim{font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);margin:14px 0 0;}
+.body{font-size:1.0625rem;color:var(--muted);max-width:58ch;margin:0;}
+.body + .body{margin-top:18px;}
+.body b{color:var(--ink);font-weight:500;}
 
-.pill{
-  font-family:var(--mono);font-size:.6875rem;letter-spacing:.04em;
-  padding:4px 9px;border-radius:100px;white-space:nowrap;display:inline-block;
+.tenets{
+  margin-top:clamp(56px,8vw,104px);
+  display:grid;gap:0;border-top:1px solid var(--rule);
 }
-.pill.live{background:var(--blue-soft);color:var(--blue);}
-.pill.soon{background:var(--amber-soft);color:var(--amber);}
+@media(min-width:820px){.tenets{grid-template-columns:repeat(3,1fr);}}
+.tenet{padding:26px 0 30px;border-bottom:1px solid var(--rule);}
+@media(min-width:820px){
+  .tenet{border-bottom:0;padding:30px 34px 8px 0;}
+  .tenet + .tenet{border-left:1px solid var(--rule);padding-left:34px;}
+}
+.tenet h3{margin:12px 0 0;font-size:1.0625rem;font-weight:500;letter-spacing:-.01em;}
+.tenet p{margin:8px 0 0;color:var(--muted);font-size:.9375rem;max-width:40ch;}
 
-/* ============ what we do ============ */
-.what{background:var(--card);border-top:1px solid var(--rule);}
-.what-grid{display:grid;gap:clamp(30px,5vw,64px);align-items:start;}
-@media(min-width:900px){.what-grid{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);}}
-.pillars{display:grid;gap:2px;}
-.pillar{
-  border-top:1px solid var(--rule);padding:22px 0 24px;
-  display:grid;gap:8px;grid-template-columns:1fr;
-}
-@media(min-width:640px){.pillar{grid-template-columns:auto 1fr;gap:8px 26px;align-items:baseline;}}
-.pillar-n{font-family:var(--mono);font-size:.8125rem;color:var(--blue);}
-.pillar h3{margin:0;font-size:1.125rem;font-weight:600;letter-spacing:-.015em;grid-column:auto;}
-@media(min-width:640px){.pillar h3{grid-column:2;}}
-.pillar p{margin:6px 0 0;color:var(--ink-soft);font-size:1rem;max-width:56ch;}
-@media(min-width:640px){.pillar p{grid-column:2;}}
-
-/* ============ feature layouts ============ */
-.layouts{background:var(--paper);}
-.layouts-head{margin-bottom:clamp(38px,6vw,64px);}
-.feat{
-  border-top:1px solid var(--rule);
-  padding:clamp(44px,7vw,80px) 0;
-  display:grid;gap:clamp(28px,4vw,56px);align-items:start;
-}
-@media(min-width:960px){
-  .feat{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);}
-  .feat.flip .feat-text{order:2;}
-  .feat.flip .feat-vis{order:1;}
-}
-.feat-text{position:relative;}
-@media(min-width:960px){.feat-text{position:sticky;top:calc(var(--nav-h) + 40px);}}
-.feat-meta{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap;}
-.feat-n{font-family:var(--mono);font-size:.8125rem;color:var(--ink-faint);letter-spacing:.06em;}
-.feat-name{
-  font-size:clamp(1.5rem,3.2vw,2.125rem);
-  line-height:1.12;letter-spacing:-.028em;font-weight:600;margin:0;
-}
-.feat-name[data-name-slot]{
-  color:var(--ink-faint);
-  border-bottom:2px dashed var(--rule);
-  padding-bottom:4px;display:inline-block;
-}
-.feat-sub{
-  margin:14px 0 0;font-size:1.0625rem;font-weight:500;color:var(--ink);
-  letter-spacing:-.01em;max-width:34ch;
-}
-.feat-body{margin:14px 0 0;color:var(--ink-soft);font-size:1rem;max-width:52ch;}
-.feat-body + .feat-body{margin-top:12px;}
-.feat-body b{color:var(--ink);font-weight:500;}
-
-/* ---- visual shells ---- */
-.vis{
-  background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden;
-  box-shadow:0 1px 2px rgba(11,14,20,.04),0 12px 32px -18px rgba(11,14,20,.16);
-}
-.vis-bar{
-  padding:13px 18px;border-bottom:1px solid var(--rule);
-  font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);
-  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;
-}
-.vis-pad{padding:22px 18px 26px;}
-@media(min-width:760px){.vis-pad{padding:28px 26px 30px;}}
-
-/* deck outline */
-.slot-list{list-style:none;margin:0;padding:0;}
-.slot{
-  padding:15px 18px;border-bottom:1px solid var(--rule-soft);
-  display:grid;grid-template-columns:1fr;gap:5px;
-}
-@media(min-width:720px){
-  .slot{grid-template-columns:auto 19ch 1fr;gap:6px 18px;align-items:baseline;padding:15px 22px;}
-}
-.slot:last-child{border-bottom:0;}
-.slot-n{font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);}
-.slot-name{font-weight:500;font-size:.9375rem;}
-.slot-desc{color:var(--ink-soft);font-size:.9375rem;margin:0;}
-.slot-fig{
-  font-family:var(--mono);font-size:.6875rem;color:var(--ink-faint);
-  border:1px dashed var(--rule);border-radius:3px;
-  padding:5px 8px;margin-top:8px;display:inline-block;
+/* ---------------- index ---------------- */
+.index{border-top:1px solid var(--rule);}
+.index-bar{
+  display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:22px 0;border-bottom:1px solid var(--rule);
 }
 
-/* tracked links dark panel */
-.panel{background:var(--dark);color:#E6EAF0;border-radius:10px;overflow:hidden;border:1px solid var(--dark-rule);}
-.panel-bar{
-  display:flex;align-items:center;justify-content:space-between;gap:14px;
-  padding:14px 18px;border-bottom:1px solid var(--dark-rule);
-  font-family:var(--mono);font-size:.75rem;color:var(--dark-text);
+/* ---------------- entries ---------------- */
+.entry{padding:clamp(60px,9vw,120px) 0 clamp(52px,8vw,104px);border-bottom:1px solid var(--rule);}
+.entry-top{display:flex;justify-content:space-between;align-items:baseline;gap:20px;}
+.entry-name{
+  font-size:clamp(3rem,12.5vw,10.5rem);
+  line-height:.86;letter-spacing:-.055em;font-weight:500;
+  margin:clamp(18px,2.6vw,34px) 0 0;text-transform:uppercase;
 }
-.dot{width:6px;height:6px;border-radius:50%;background:var(--blue-lit);display:inline-block;margin-right:8px;vertical-align:1px;}
-.panel-body{padding:20px 18px 24px;}
-@media(min-width:760px){.panel-body{padding:26px 26px 30px;}}
-.rowset{display:flex;flex-direction:column;}
-.row{display:grid;grid-template-columns:1fr;gap:6px;padding:11px 0;border-bottom:1px solid var(--dark-rule);}
-@media(min-width:600px){.row{grid-template-columns:15ch 1fr 9ch;align-items:center;gap:16px;}}
-.row:last-child{border-bottom:0;}
-.row-name{font-size:.9375rem;color:#C6CDD8;}
-.track{height:8px;background:#181D26;border-radius:100px;overflow:hidden;}
-.fill{display:block;height:100%;width:0;background:#39414F;border-radius:100px;transition:width 1s cubic-bezier(.2,.7,.2,1);}
-.row-count{font-family:var(--mono);font-size:.8125rem;color:var(--dark-text);}
-@media(min-width:600px){.row-count{text-align:right;}}
-.panel.played .fill{width:var(--w);}
-.row.key .row-name{color:#fff;font-weight:500;}
-.row.key .fill{background:linear-gradient(90deg,var(--blue),var(--blue-lit));}
-.row.key .row-count{color:#fff;}
+.entry-line{
+  font-size:clamp(1.25rem,2.7vw,2rem);
+  line-height:1.14;letter-spacing:-.03em;font-weight:400;
+  margin:clamp(22px,3vw,40px) 0 0;max-width:22ch;
+}
+.entry-grid{
+  display:grid;gap:clamp(30px,4vw,56px);
+  margin-top:clamp(30px,4vw,54px);
+}
+@media(min-width:900px){.entry-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(48px,7vw,110px);}}
+
+.spec{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule);}
+.spec li{
+  display:grid;grid-template-columns:2.6rem 1fr;gap:6px 14px;align-items:baseline;
+  padding:13px 0;border-bottom:1px solid var(--rule-soft);
+}
+.spec .n{font-family:var(--mono);font-size:.6875rem;color:var(--faint);letter-spacing:.1em;}
+.spec .t{font-size:.9375rem;}
+.spec .d{grid-column:2;color:var(--muted);font-size:.875rem;margin:0;}
+.spec .fig{
+  grid-column:2;font-family:var(--mono);font-size:.75rem;color:var(--ink);
+  font-variant-numeric:tabular-nums;
+}
+.spec .fig:empty{display:none;}
+.spec.plain li{grid-template-columns:1fr;}
+.spec.plain .t{font-size:1rem;}
+
+/* readout */
+.readout{border-top:1px solid var(--rule);}
+.rrow{
+  display:grid;grid-template-columns:1fr;gap:7px;
+  padding:13px 0;border-bottom:1px solid var(--rule-soft);
+}
+@media(min-width:560px){.rrow{grid-template-columns:14ch 1fr 8ch;gap:18px;align-items:center;}}
+.rname{font-size:.9375rem;color:var(--muted);}
+.rtrack{height:1px;background:var(--rule);position:relative;}
+.rfill{
+  position:absolute;left:0;top:-1px;height:3px;width:0;background:var(--ink);
+  transition:width 1.1s cubic-bezier(.22,.75,.2,1);
+}
+.rcount{font-family:var(--mono);font-size:.75rem;color:var(--faint);letter-spacing:.06em;}
+@media(min-width:560px){.rcount{text-align:right;}}
+.readout.played .rfill{width:var(--w);}
+.rrow.key .rname{color:var(--ink);}
+.rrow.key .rcount{color:var(--ink);}
+.rrow:last-of-type{border-bottom:0;}
 .verdict{
-  margin-top:20px;padding-top:20px;border-top:1px solid var(--dark-rule);
-  opacity:0;transform:translateY(6px);
-  transition:opacity .5s .8s ease,transform .5s .8s ease;
+  border-top:1px solid var(--rule);margin-top:4px;padding-top:22px;
+  opacity:0;transform:translateY(5px);
+  transition:opacity .6s .85s ease,transform .6s .85s ease;
 }
-.panel.played .verdict{opacity:1;transform:none;}
-.verdict p{margin:0;font-size:1.0625rem;line-height:1.5;color:#EDF0F5;max-width:54ch;}
-.verdict p + p{margin-top:10px;color:var(--dark-text);font-size:.9375rem;}
+.readout.played .verdict{opacity:1;transform:none;}
+.verdict p{margin:0;font-size:1.0625rem;line-height:1.5;max-width:44ch;}
+.verdict .sub{margin-top:8px;color:var(--muted);font-size:.875rem;font-family:var(--mono);}
+.note{font-family:var(--mono);font-size:.6875rem;letter-spacing:.08em;color:var(--faint);margin:16px 0 0;line-height:1.7;}
 .play{
-  font:inherit;font-family:var(--mono);font-size:.75rem;
-  background:transparent;color:#fff;border:1px solid #2C3444;
-  padding:7px 14px;border-radius:100px;cursor:pointer;transition:border-color .2s;
+  font:inherit;font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;
+  background:none;border:0;border-bottom:1px solid var(--rule);color:var(--muted);
+  padding:0 0 4px;cursor:pointer;transition:color .25s,border-color .25s;
 }
-.play:hover{border-color:var(--blue-lit);}
-.panel.played .play{opacity:.4;}
+.play:hover{color:var(--ink);border-color:var(--ink);}
+.readout.played .play{opacity:.4;}
 
-/* abstract svg visuals */
-.figure{display:block;width:100%;height:auto;}
-.f-rule{stroke:#E3E6EB;stroke-width:1;}
-.f-soft{fill:#F2F4F8;}
-.f-line{stroke:#C7CDD8;stroke-width:1.25;fill:none;}
-.f-blue{fill:var(--blue);}
-.f-blue-line{stroke:var(--blue);stroke-width:1.5;fill:none;}
-.f-label{font-family:var(--mono);font-size:9px;fill:#8A93A1;letter-spacing:.06em;}
-.f-label.on{fill:var(--blue);}
-
-.dash{
-  border:1px dashed var(--rule);border-radius:8px;
-  padding:26px 20px;text-align:center;
-  font-family:var(--mono);font-size:.75rem;color:var(--ink-faint);
+/* ---------------- pricing ---------------- */
+.tiers{display:grid;gap:0;border-top:1px solid var(--rule);margin-top:clamp(48px,7vw,88px);}
+@media(min-width:880px){.tiers{grid-template-columns:repeat(3,1fr);}}
+.tier{padding:32px 0 36px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;}
+@media(min-width:880px){
+  .tier{border-bottom:0;padding:34px 36px 8px 0;}
+  .tier + .tier{border-left:1px solid var(--rule);padding-left:36px;}
 }
-
-/* ============ pricing ============ */
-.tiers{display:grid;gap:16px;margin-top:clamp(34px,5vw,48px);}
-@media(min-width:900px){.tiers{grid-template-columns:repeat(3,1fr);}}
-.tier{
-  background:var(--card);border:1px solid var(--rule);border-radius:10px;
-  padding:26px 24px;display:flex;flex-direction:column;
-}
-.tier.feature{border-color:var(--ink);box-shadow:0 18px 40px -26px rgba(11,14,20,.4);}
-.tier h3{margin:0;font-size:1.25rem;font-weight:600;letter-spacing:-.015em;}
-.tier h3[data-name-slot]{color:var(--ink-faint);border-bottom:2px dashed var(--rule);padding-bottom:3px;display:inline-block;}
-.price{
-  font-family:var(--mono);font-size:.8125rem;color:var(--ink-faint);
-  border:1px dashed var(--rule);border-radius:4px;
-  padding:9px 11px;margin:16px 0 20px;
-}
+.tier h3{margin:14px 0 0;font-size:1.5rem;font-weight:500;letter-spacing:-.03em;text-transform:uppercase;}
+.tier h3[data-slot]{color:var(--faint);text-transform:none;font-size:1.125rem;border-bottom:1px dashed var(--rule);display:inline-block;padding-bottom:3px;}
+.price{font-family:var(--mono);font-size:.75rem;letter-spacing:.08em;color:var(--faint);margin:14px 0 26px;}
 .tier ul{list-style:none;margin:0;padding:0;flex:1;}
-.tier li{
-  font-size:.9375rem;padding:10px 0 10px 20px;position:relative;
-  border-top:1px solid var(--rule-soft);color:var(--ink-soft);
-}
+.tier li{font-size:.9375rem;color:var(--muted);padding:9px 0;border-top:1px solid var(--rule-soft);}
 .tier li:first-child{border-top:0;}
-.tier li::before{content:"";position:absolute;left:0;top:18px;width:8px;height:1px;background:var(--blue);}
-.tier .btn{margin-top:22px;text-align:center;}
+.tier .link-cta{margin-top:28px;align-self:flex-start;color:var(--ink);}
 
-/* ============ waitlist ============ */
-.signup{background:var(--dark);color:#EEF1F6;border-top:0;position:relative;overflow:hidden;}
-.signup::before{
-  content:"";position:absolute;inset:0;
-  background:radial-gradient(760px 420px at 84% 0%,rgba(27,79,224,.3),transparent 62%);
-}
-.signup .wrap{position:relative;}
-.signup .kicker{color:var(--blue-lit);}
-.signup h2{color:#fff;}
-.signup .lede{color:#B8C0CD;}
-.form{display:grid;gap:14px;margin-top:32px;max-width:560px;}
+/* ---------------- close ---------------- */
+.close-sec{background:var(--ink-deep);color:var(--on-ink);}
+.close-sec .label{color:var(--on-ink-muted);}
+.close-sec h2{color:#fff;}
+.close-sec .body{color:#9A9893;}
+.form{display:grid;gap:0;margin-top:clamp(38px,5vw,60px);max-width:640px;border-top:1px solid var(--on-ink-rule);}
 @media(min-width:620px){.form{grid-template-columns:1fr 1fr;}}
-.field{display:flex;flex-direction:column;gap:7px;}
-.field.full{grid-column:1/-1;}
-label{font-size:.8125rem;color:var(--dark-text);font-family:var(--mono);letter-spacing:.04em;}
+.field{display:flex;flex-direction:column;gap:8px;padding:20px 0 22px;border-bottom:1px solid var(--on-ink-rule);}
+@media(min-width:620px){.field:nth-child(odd){padding-right:32px;}}
+label{font-family:var(--mono);font-size:.6875rem;letter-spacing:.14em;text-transform:uppercase;color:#7C7A74;}
 input{
-  font:inherit;font-size:1rem;padding:12px 13px;
-  border:1px solid var(--dark-rule);border-radius:6px;
-  background:rgba(255,255,255,.04);color:#fff;min-height:46px;
-  transition:border-color .2s,background .2s;
+  font:inherit;font-size:1.0625rem;padding:0;border:0;background:transparent;
+  color:#fff;min-height:32px;
 }
-input::placeholder{color:#5C6675;}
-input:focus{border-color:var(--blue-lit);background:rgba(255,255,255,.07);}
-.form .btn{grid-column:1/-1;justify-self:start;}
-.formnote{font-family:var(--mono);font-size:.75rem;color:var(--dark-text);margin:18px 0 0;max-width:56ch;line-height:1.6;}
+input::placeholder{color:#5A5954;}
+input:focus{outline:0;}
+.field:focus-within label{color:var(--on-ink-muted);}
+.form-foot{grid-column:1/-1;padding-top:26px;display:flex;flex-wrap:wrap;gap:18px 32px;align-items:center;}
+.submit{
+  font:inherit;font-family:var(--mono);font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--on-ink);color:var(--ink-deep);border:0;
+  padding:14px 26px;cursor:pointer;transition:opacity .25s;
+}
+.submit:hover{opacity:.8;}
+.formnote{font-family:var(--mono);font-size:.6875rem;letter-spacing:.06em;color:#93918B;margin:0;max-width:40ch;line-height:1.7;}
 
-/* ============ footer ============ */
-footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;color:var(--ink-soft);}
-.foot{display:flex;flex-wrap:wrap;gap:16px 28px;justify-content:space-between;align-items:center;}
-.foot a{color:var(--ink-soft);}
-.foot nav{display:flex;flex-wrap:wrap;gap:14px 24px;}
+/* ---------------- footer ---------------- */
+footer{background:var(--ink-deep);color:#93918B;padding:0 0 44px;}
+.foot{
+  display:flex;flex-wrap:wrap;gap:14px 32px;justify-content:space-between;align-items:center;
+  padding-top:36px;border-top:1px solid var(--on-ink-rule);
+  font-family:var(--mono);font-size:.6875rem;letter-spacing:.1em;text-transform:uppercase;
+}
+.foot a{text-decoration:none;}
+.foot a:hover{color:var(--on-ink);}
+.foot nav{display:flex;flex-wrap:wrap;gap:12px 26px;}
 
-/* ============ reveal ============ */
-.rv{opacity:0;transform:translateY(14px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
+/* ---------------- motion ---------------- */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1);}
 .rv.in{opacity:1;transform:none;}
-
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto;}
-  .fill,.verdict,.rv,.btn{transition:none;}
+  .rv,.rfill,.verdict{transition:none;}
   .rv{opacity:1;transform:none;}
 }
 </style>
@@ -411,14 +297,13 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
 
 <header class="nav" id="nav" data-mode="dark">
   <div class="wrap nav-in">
-    <a class="mark" href="#top"><i></i>BASIS</a>
+    <a class="mark" href="#top">Basis</a>
     <nav class="nav-links">
       <a href="#what">What we do</a>
-      <a href="#layouts">The product</a>
+      <a href="#index">The five</a>
       <a href="#pricing">Pricing</a>
-      <a href="#waitlist">Early access</a>
     </nav>
-    <a class="nav-cta" href="#waitlist">Get early access</a>
+    <a class="nav-cta" href="#access">Early access</a>
   </div>
 </header>
 
@@ -426,16 +311,21 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
 
   <!-- ============ BANNER ============ -->
   <section class="banner">
-    <div class="wrap">
-      <p class="eyebrow">BASIS for Singapore property agents</p>
+    <div class="wrap banner-in">
+      <p class="label">Basis, for Singapore property agents</p>
+
+      <h1>You're good with people. <span class="dim">Machines are good with numbers.</span></h1>
+      <p class="stop">So stop doing both.</p>
 
       <div class="banner-grid">
-        <div>
-          <h1>You're good with people.<span class="b2">Machines are good with numbers.</span></h1>
-          <p class="stop">So stop doing both.</p>
-          <div class="banner-actions">
-            <a class="btn light" href="#waitlist">Get early access</a>
-            <a class="btn outline-light" href="#layouts">See the product</a>
+        <div class="banner-side">
+          <div class="acts">
+            <a class="link-cta" href="#access">Get early access</a>
+            <a class="link-cta quiet" href="#index">See the five</a>
+          </div>
+          <div class="src">
+            <b>Sources</b>
+            <span>URA</span><span>HDB</span><span>MOE</span><span>LTA</span><span>OneMap</span>
           </div>
         </div>
 
@@ -446,323 +336,177 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
           <p class="close">Level up with <b>BASIS</b>.</p>
         </div>
       </div>
-
-      <div class="sources">
-        <b>Every figure traces back to a source:</b>
-        <span>URA</span><span>HDB</span><span>MOE</span><span>LTA</span><span>OneMap</span>
-      </div>
     </div>
   </section>
 
   <!-- ============ WHAT WE DO ============ -->
-  <section class="sec what" id="what">
-    <div class="wrap what-grid">
-      <div class="rv">
-        <p class="kicker">What we do</p>
-        <h2>We do the preparation. You do the part that needs a person.</h2>
-        <p class="lede">BASIS is a working surface built for licensed agents in Singapore. It reads the public record every day, does the groundwork you would otherwise do by hand at night, and hands it back in a form you can put straight in front of a client.</p>
-        <p class="lede">It does not price your listing for you and it does not talk to your client for you. Those are yours. Everything in between is ours.</p>
+  <section class="sec" id="what">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <div>
+          <p class="label">What we do</p>
+        </div>
+        <div>
+          <h2>We do the preparation. You do the part that needs a person.</h2>
+          <p class="body" style="margin-top:32px">BASIS reads the public record every day, does the groundwork you would otherwise do at night, and hands it back in a form you can put straight in front of a client.</p>
+          <p class="body">It will not price your listing and it will not talk to your client. Those are yours. Everything in between is ours.</p>
+        </div>
       </div>
 
-      <div class="pillars rv">
-        <div class="pillar">
-          <span class="pillar-n">01</span>
+      <div class="tenets rv">
+        <div class="tenet">
+          <p class="label">01</p>
           <h3>Sourced, never estimated</h3>
-          <p>Every figure traces back to URA, HDB, MOE, LTA or OneMap, and arrives carrying its sample size. A median built from two transactions says two transactions, on the slide, in front of your client.</p>
+          <p>Every figure traces back to URA, HDB, MOE, LTA or OneMap and arrives carrying its sample size. A median built from two transactions says two transactions.</p>
         </div>
-        <div class="pillar">
-          <span class="pillar-n">02</span>
-          <h3>Gaps are named, not filled</h3>
+        <div class="tenet">
+          <p class="label">02</p>
+          <h3>Gaps named, not filled</h3>
           <p>Anything we cannot source is written down as missing rather than quietly guessed. You will never have to defend a number you cannot explain.</p>
         </div>
-        <div class="pillar">
-          <span class="pillar-n">03</span>
-          <h3>It goes out under your name</h3>
-          <p>Your name, your agency and your CEA registration number sit on the output. The client sees your work, not a vendor's logo.</p>
-        </div>
-        <div class="pillar">
-          <span class="pillar-n">04</span>
-          <h3>Honest about what is live</h3>
-          <p>One part of this ships today. The rest is in build and labelled as such on this page. We will tell you the day each one opens and we will not bill you for it before then.</p>
+        <div class="tenet">
+          <p class="label">03</p>
+          <h3>Your name on the output</h3>
+          <p>Your name, your agency and your CEA registration number. The client sees your work, not a vendor's logo.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ LAYOUTS / FEATURES ============ -->
-  <section class="sec layouts plain" id="layouts">
+  <!-- ============ THE FIVE ============ -->
+  <section class="index" id="index">
     <div class="wrap">
-      <div class="layouts-head rv">
-        <p class="kicker">The product</p>
-        <h2>Six things that used to be your evening.</h2>
-        <p class="lede">Names for these are still being decided. The slots below are placeholders, held open deliberately.</p>
+      <div class="index-bar">
+        <p class="label">The five</p>
+        <p class="label">Details, interest, retention, vision, order</p>
       </div>
-    </div>
 
-    <!-- 01 -->
-    <div class="wrap">
-      <article class="feat rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">01</span>
-            <span class="pill live">Available now</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">Decks built from an address.</p>
-          <p class="feat-body">Type an address, tick the sections you want, and take the deck to tomorrow's appointment. Eight sections, pulled from the registry rather than retyped from a listing.</p>
-          <p class="feat-body"><b>Every number arrives carrying its sample size.</b> The last section is the one your competitors leave out: every source cited, and every figure we could not find written down as missing.</p>
+      <!-- 01 DETAILS -->
+      <article class="entry rv">
+        <div class="entry-top">
+          <p class="label">01</p>
+          <p class="label">Available now</p>
         </div>
-        <div class="feat-vis">
-          <div class="vis">
-            <div class="vis-bar">
-              <span>Deck workspace</span>
-              <span>8 sections</span>
-            </div>
-            <ol class="slot-list">
-              <li class="slot"><span class="slot-n">01</span><span class="slot-name">Property details</span><p class="slot-desc">Tenure, floor area, completion year and unit mix, read from the registry.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">02</span><span class="slot-name">Market prices</span><p class="slot-desc">Transactions in the project and the surrounding area, each median stamped with the number of sales behind it.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">03</span><span class="slot-name">Costs and financing</span><p class="slot-desc">Stamp duties, the cash and CPF split, and monthly instalments your client can check line by line.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">04</span><span class="slot-name">Schools</span><p class="slot-desc">Schools inside the one and two kilometre bands, measured from MOE and OneMap data.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">05</span><span class="slot-name">Transport</span><p class="slot-desc">Stations, bus connections and drive times, drawn from LTA records.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">06</span><span class="slot-name">Amenities</span><p class="slot-desc">What sits within walking distance, located rather than described.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">07</span><span class="slot-name">Area outlook</span><p class="slot-desc">Planning decisions and announcements on record for the area, linked back to the primary document.<span class="slot-fig">figure slot: awaiting captured payload</span></p></li>
-              <li class="slot"><span class="slot-n">08</span><span class="slot-name">Sources and gaps</span><p class="slot-desc">Every source cited, and every figure we could not find written down as missing.</p></li>
-            </ol>
+        <h2 class="entry-name">Details</h2>
+        <p class="entry-line">A deal turns on a detail. Usually one you did not check.</p>
+        <div class="entry-grid">
+          <div>
+            <p class="body">Type an address. Every detail worth having comes back in eight sections, and every figure arrives carrying its source and the number of transactions behind it.</p>
+            <p class="body">What we cannot source is named as missing rather than quietly filled in. So you walk into the appointment holding all of it, and holding nothing you cannot explain.</p>
           </div>
-          <p class="disclaim">Figure slots are wired to take real captured payloads. No invented property data ships on this page.</p>
+          <ul class="spec">
+            <li><span class="n">01</span><span class="t">Property details</span><p class="d">Tenure, floor area, completion year and unit mix, read from the registry.</p><span class="fig"></span></li>
+            <li><span class="n">02</span><span class="t">Market prices</span><p class="d">Transactions in the project and around it, each median stamped with the sales behind it.</p><span class="fig"></span></li>
+            <li><span class="n">03</span><span class="t">Costs and financing</span><p class="d">Stamp duties, the cash and CPF split, and instalments your client can check line by line.</p><span class="fig"></span></li>
+            <li><span class="n">04</span><span class="t">Schools</span><p class="d">Inside the one and two kilometre bands, measured from MOE and OneMap data.</p><span class="fig"></span></li>
+            <li><span class="n">05</span><span class="t">Transport</span><p class="d">Stations, bus connections and drive times, drawn from LTA records.</p><span class="fig"></span></li>
+            <li><span class="n">06</span><span class="t">Amenities</span><p class="d">What sits within walking distance, located rather than described.</p><span class="fig"></span></li>
+            <li><span class="n">07</span><span class="t">Area outlook</span><p class="d">Planning decisions on record for the area, linked back to the primary document.</p><span class="fig"></span></li>
+            <li><span class="n">08</span><span class="t">Sources and gaps</span><p class="d">Every source cited, and every figure we could not find written down as missing.</p></li>
+          </ul>
         </div>
       </article>
-    </div>
 
-    <!-- 02 -->
-    <div class="wrap">
-      <article class="feat flip rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">02</span>
-            <span class="pill soon">In build</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">Links that tell you who's reading and what they're stuck on.</p>
-          <p class="feat-body">He came in with two young children, so you built the pitch around schools. Send the deck as a link instead of a file and watch what he actually does with it.</p>
-          <p class="feat-body">He opens costs and financing eleven times. He sits there for fourteen of his nineteen minutes. He forwards that section twice, probably to whoever signs with him. He never goes back to schools.</p>
-          <p class="feat-body"><b>Now you know which conversation to open with on Monday.</b> Not the one you assumed. The one he already chose.</p>
+      <!-- 02 INTEREST -->
+      <article class="entry rv">
+        <div class="entry-top">
+          <p class="label">02</p>
+          <p class="label">In build</p>
         </div>
-        <div class="feat-vis">
-          <div class="panel" id="panel">
-            <div class="panel-bar">
-              <span><span class="dot"></span>Client B, deck opened 3 times</span>
-              <button class="play" id="play" type="button">Play the session</button>
-            </div>
-            <div class="panel-body">
-              <div class="rowset">
-                <div class="row"><span class="row-name">Property details</span><span class="track"><i class="fill" style="--w:18%"></i></span><span class="row-count">2 opens</span></div>
-                <div class="row"><span class="row-name">Market prices</span><span class="track"><i class="fill" style="--w:27%"></i></span><span class="row-count">3 opens</span></div>
-                <div class="row key"><span class="row-name">Costs and financing</span><span class="track"><i class="fill" style="--w:100%"></i></span><span class="row-count">11 opens</span></div>
-                <div class="row"><span class="row-name">Schools</span><span class="track"><i class="fill" style="--w:9%"></i></span><span class="row-count">1 open</span></div>
-                <div class="row"><span class="row-name">Transport</span><span class="track"><i class="fill" style="--w:18%"></i></span><span class="row-count">2 opens</span></div>
-                <div class="row"><span class="row-name">Amenities</span><span class="track"><i class="fill" style="--w:9%"></i></span><span class="row-count">1 open</span></div>
-                <div class="row"><span class="row-name">Area outlook</span><span class="track"><i class="fill" style="--w:0%"></i></span><span class="row-count">0 opens</span></div>
-                <div class="row"><span class="row-name">Sources and gaps</span><span class="track"><i class="fill" style="--w:9%"></i></span><span class="row-count">1 open</span></div>
+        <h2 class="entry-name">Interest</h2>
+        <p class="entry-line">Interest is a fact. Stop reading it off a face.</p>
+        <div class="entry-grid">
+          <div>
+            <p class="body">Send the deck as a link instead of a file. You see which sections he opened, how long he stayed in each one, what he forwarded, and what he never went back to.</p>
+            <p class="body">He came in talking about schools. He spent fourteen of his nineteen minutes on financing and forwarded it twice. <b>Open Monday with the section he chose, not the one you assumed.</b></p>
+            <p class="note">One link per client. Revocable. Always reading current data, so a deck sent in March does not quote March prices in June.</p>
+          </div>
+          <div>
+            <div class="readout" id="readout">
+              <div class="index-bar" style="border-bottom:0;padding:0 0 16px">
+                <p class="label">Client B, three opens</p>
+                <button class="play" id="play" type="button">Play session</button>
               </div>
+              <div class="rrow"><span class="rname">Property details</span><span class="rtrack"><i class="rfill" style="--w:18%"></i></span><span class="rcount">2 opens</span></div>
+              <div class="rrow"><span class="rname">Market prices</span><span class="rtrack"><i class="rfill" style="--w:27%"></i></span><span class="rcount">3 opens</span></div>
+              <div class="rrow key"><span class="rname">Costs and financing</span><span class="rtrack"><i class="rfill" style="--w:100%"></i></span><span class="rcount">11 opens</span></div>
+              <div class="rrow"><span class="rname">Schools</span><span class="rtrack"><i class="rfill" style="--w:9%"></i></span><span class="rcount">1 open</span></div>
+              <div class="rrow"><span class="rname">Transport</span><span class="rtrack"><i class="rfill" style="--w:18%"></i></span><span class="rcount">2 opens</span></div>
+              <div class="rrow"><span class="rname">Amenities</span><span class="rtrack"><i class="rfill" style="--w:9%"></i></span><span class="rcount">1 open</span></div>
+              <div class="rrow"><span class="rname">Area outlook</span><span class="rtrack"><i class="rfill" style="--w:0%"></i></span><span class="rcount">0 opens</span></div>
+              <div class="rrow"><span class="rname">Sources and gaps</span><span class="rtrack"><i class="rfill" style="--w:9%"></i></span><span class="rcount">1 open</span></div>
               <div class="verdict">
                 <p>Lead with financing. He has already shortlisted the objection for you.</p>
-                <p>Forwarded twice from costs and financing. 14 min of 19 min spent on one section.</p>
+                <p class="sub">14 min of 19 min in one section. Forwarded twice.</p>
               </div>
             </div>
-          </div>
-          <p class="disclaim">Illustrative session. No real agent or client data appears on this site. One link per client, revocable, always reading current data.</p>
-        </div>
-      </article>
-    </div>
-
-    <!-- 03 -->
-    <div class="wrap">
-      <article class="feat rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">03</span>
-            <span class="pill soon">In build</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">News that arrives already sorted by which of your clients it hits.</p>
-          <p class="feat-body">It reads property news and official releases daily and goes to the primary record for Parliament and ministry announcements rather than to somebody's summary of it.</p>
-          <p class="feat-body"><b>Then it does the part that takes you an hour.</b> It works out which of your own clients this actually affects, groups them, and drafts the message to send each group. You read it, change what you want, and send.</p>
-        </div>
-        <div class="feat-vis">
-          <div class="vis">
-            <div class="vis-bar"><span>Routing, structure only</span><span>no live content</span></div>
-            <div class="vis-pad">
-              <svg class="figure" viewBox="0 0 520 260" role="img" aria-label="Diagram: incoming announcements are routed into client groups">
-                <text class="f-label" x="0" y="14">SOURCE RECORD</text>
-                <text class="f-label" x="212" y="14">BASIS</text>
-                <text class="f-label on" x="404" y="14">YOUR CLIENTS</text>
-
-                <rect class="f-soft" x="0" y="30" width="150" height="34" rx="5"/>
-                <rect x="0" y="30" width="150" height="34" rx="5" class="f-rule" fill="none"/>
-                <rect class="f-soft" x="0" y="76" width="150" height="34" rx="5"/>
-                <rect x="0" y="76" width="150" height="34" rx="5" class="f-rule" fill="none"/>
-                <rect class="f-soft" x="0" y="122" width="150" height="34" rx="5"/>
-                <rect x="0" y="122" width="150" height="34" rx="5" class="f-rule" fill="none"/>
-                <rect class="f-soft" x="0" y="168" width="150" height="34" rx="5"/>
-                <rect x="0" y="168" width="150" height="34" rx="5" class="f-rule" fill="none"/>
-                <line class="f-line" x1="14" y1="47" x2="96" y2="47"/>
-                <line class="f-line" x1="14" y1="93" x2="118" y2="93"/>
-                <line class="f-line" x1="14" y1="139" x2="82" y2="139"/>
-                <line class="f-line" x1="14" y1="185" x2="108" y2="185"/>
-
-                <path class="f-line" d="M150 47 C 190 47, 190 116, 232 116"/>
-                <path class="f-line" d="M150 93 C 190 93, 195 116, 232 116"/>
-                <path class="f-line" d="M150 139 C 190 139, 195 116, 232 116"/>
-                <path class="f-line" d="M150 185 C 190 185, 190 116, 232 116"/>
-
-                <rect x="232" y="88" width="60" height="58" rx="7" fill="#0B0E14"/>
-                <circle cx="262" cy="117" r="7" fill="#5B84FF"/>
-
-                <path class="f-blue-line" d="M292 116 C 334 116, 334 48, 372 48"/>
-                <path class="f-blue-line" d="M292 116 C 334 116, 334 116, 372 116"/>
-                <path class="f-blue-line" d="M292 116 C 334 116, 334 184, 372 184"/>
-
-                <rect x="372" y="30" width="148" height="36" rx="5" fill="#EAEFFD"/>
-                <text class="f-label on" x="386" y="52">GROUP A, drafted</text>
-                <rect x="372" y="98" width="148" height="36" rx="5" fill="#EAEFFD"/>
-                <text class="f-label on" x="386" y="120">GROUP B, drafted</text>
-                <rect x="372" y="166" width="148" height="36" rx="5" fill="#EAEFFD"/>
-                <text class="f-label on" x="386" y="188">GROUP C, drafted</text>
-
-                <text class="f-label" x="0" y="238">Structure only. No live headlines or client records are shown on this page.</text>
-              </svg>
-            </div>
+            <p class="note">Illustrative session. No real agent or client data appears on this site.</p>
           </div>
         </div>
       </article>
-    </div>
 
-    <!-- 04 -->
-    <div class="wrap">
-      <article class="feat flip rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">04</span>
-            <span class="pill soon">In build</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">Empty rooms furnished.</p>
-          <p class="feat-body">Upload a photo of a bare room and get a styled version back. The furniture is identified, not just drawn, so the list comes with the shops that sell it.</p>
-          <p class="feat-body"><b>A buyer standing in an empty flat is doing this in their head anyway.</b> Do it for them, and do it well enough that they stop guessing.</p>
+      <!-- 03 RETENTION -->
+      <article class="entry rv">
+        <div class="entry-top">
+          <p class="label">03</p>
+          <p class="label">In build</p>
         </div>
-        <div class="feat-vis">
-          <div class="vis">
-            <div class="vis-bar"><span>Before and after, illustrative outline</span><span>no photography</span></div>
-            <div class="vis-pad">
-              <svg class="figure" viewBox="0 0 520 250" role="img" aria-label="Diagram: an empty room outline beside the same room with furniture outlined">
-                <text class="f-label" x="0" y="12">EMPTY</text>
-                <rect class="f-soft" x="0" y="24" width="246" height="176" rx="6"/>
-                <rect x="0" y="24" width="246" height="176" rx="6" class="f-rule" fill="none"/>
-                <path class="f-line" d="M40 200 L40 74 L206 74 L206 200"/>
-                <path class="f-line" d="M40 74 L0 34 M206 74 L246 34"/>
-                <rect class="f-rule" fill="none" x="150" y="92" width="44" height="52" rx="3"/>
-
-                <text class="f-label on" x="274" y="12">FURNISHED</text>
-                <rect x="274" y="24" width="246" height="176" rx="6" fill="#F7F9FF"/>
-                <rect x="274" y="24" width="246" height="176" rx="6" class="f-rule" fill="none"/>
-                <path class="f-line" d="M314 200 L314 74 L480 74 L480 200"/>
-                <path class="f-line" d="M314 74 L274 34 M480 74 L520 34"/>
-                <rect class="f-rule" fill="none" x="424" y="92" width="44" height="52" rx="3"/>
-                <rect class="f-blue-line" x="330" y="140" width="96" height="40" rx="5"/>
-                <rect class="f-blue-line" x="336" y="128" width="26" height="14" rx="3"/>
-                <rect class="f-blue-line" x="394" y="128" width="26" height="14" rx="3"/>
-                <rect class="f-blue-line" x="440" y="150" width="34" height="30" rx="4"/>
-                <circle cx="457" cy="112" r="11" class="f-blue-line"/>
-                <line class="f-blue-line" x1="457" y1="123" x2="457" y2="150"/>
-
-                <text class="f-label" x="0" y="230">Outline illustration. No stock photography and no real listing imagery.</text>
-              </svg>
-            </div>
+        <h2 class="entry-name">Retention</h2>
+        <p class="entry-line">You do not lose clients to competitors. You lose them to silence.</p>
+        <div class="entry-grid">
+          <div>
+            <p class="body">BASIS reads property news and the official record every day and goes to the primary document for Parliament and ministry announcements, not to somebody's summary of it.</p>
+            <p class="body">Then it does the hour that you never have. It works out which of your own clients each change actually touches, groups them, and drafts the message for each group. <b>The client who went quiet in March hears from you the morning something moves that affects him.</b> You read it, change what you want, and send.</p>
           </div>
+          <ul class="spec plain">
+            <li><span class="t">Primary record, not a summary</span><p class="d">Parliament and ministry releases read at source and linked back to the document.</p></li>
+            <li><span class="t">Sorted by client, not by topic</span><p class="d">The question it answers is who this hits, not what happened today.</p></li>
+            <li><span class="t">Drafted, never sent without you</span><p class="d">A message per group, waiting for your edit. Nothing leaves under your name until you send it.</p></li>
+            <li><span class="t">A reason to call</span><p class="d">Contact that is useful to the person receiving it, which is the only kind that keeps working.</p></li>
+          </ul>
         </div>
       </article>
-    </div>
 
-    <!-- 05 -->
-    <div class="wrap">
-      <article class="feat rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">05</span>
-            <span class="pill soon">In build</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">Units in 3D.</p>
-          <p class="feat-body">A unit your client can walk through from a phone on the MRT, built from the floor plan rather than from a camera rig you have to book.</p>
-          <p class="feat-body"><b>Fewer wasted viewings on both sides.</b> The people who turn up have already decided the layout works for them.</p>
+      <!-- 04 VISION -->
+      <article class="entry rv">
+        <div class="entry-top">
+          <p class="label">04</p>
+          <p class="label">In build</p>
         </div>
-        <div class="feat-vis">
-          <div class="vis">
-            <div class="vis-bar"><span>Layout massing, structure only</span><span>not a real unit</span></div>
-            <div class="vis-pad">
-              <svg class="figure" viewBox="0 0 520 336" role="img" aria-label="Diagram: an isometric wireframe of a generic unit layout">
-                <g transform="translate(80,48)">
-                  <path class="f-line" d="M0 96 L180 0 L360 96 L180 192 Z"/>
-                  <path class="f-line" d="M0 96 L0 140 L180 236 L180 192"/>
-                  <path class="f-line" d="M360 96 L360 140 L180 236"/>
-                  <path class="f-line" d="M90 48 L270 144"/>
-                  <path class="f-line" d="M180 96 L90 144"/>
-                  <path class="f-blue-line" d="M180 0 L180 -34 M0 96 L0 62 M360 96 L360 62" stroke-dasharray="3 4"/>
-                  <circle class="f-blue" cx="180" cy="96" r="4"/>
-                  <circle class="f-blue" cx="120" cy="126" r="4"/>
-                  <circle class="f-blue" cx="252" cy="120" r="4"/>
-                </g>
-                <text class="f-label" x="0" y="328">Generic massing. Not a real unit and not a real floor plan.</text>
-              </svg>
-            </div>
+        <h2 class="entry-name">Vision</h2>
+        <p class="entry-line">Most buyers cannot picture it. So hand them the picture.</p>
+        <div class="entry-grid">
+          <div>
+            <p class="body">An empty room is a hard sell, because the buyer is standing in it doing the imagining alone and on the spot. Furnish it in the photograph instead, with every piece identified and the shops that sell it.</p>
+            <p class="body">Then let them walk the unit in 3D, from a phone, on the train, at midnight. <b>The ones who turn up have already decided the layout works.</b> Fewer wasted viewings, on both sides.</p>
           </div>
+          <ul class="spec plain">
+            <li><span class="t">Furnished from a photograph</span><p class="d">Upload a bare room, get a styled one back.</p></li>
+            <li><span class="t">Pieces identified, with sources</span><p class="d">Not decoration. A list your client can actually buy from.</p></li>
+            <li><span class="t">The unit in 3D</span><p class="d">Built from the floor plan rather than from a camera rig you have to book.</p></li>
+            <li><span class="t">Walkable from anywhere</span><p class="d">No app, no appointment, no travel time spent on a maybe.</p></li>
+          </ul>
         </div>
       </article>
-    </div>
 
-    <!-- 06 -->
-    <div class="wrap">
-      <article class="feat flip rv">
-        <div class="feat-text">
-          <div class="feat-meta">
-            <span class="feat-n">06</span>
-            <span class="pill soon">In build</span>
-          </div>
-          <h3 class="feat-name" data-name-slot>Name pending</h3>
-          <p class="feat-sub">A site taking bookings while you're at a viewing.</p>
-          <p class="feat-body">A site under your own name, with your listings and your CEA registration number on it, and a consultation calendar that keeps working when your hands are full.</p>
-          <p class="feat-body"><b>You are unreachable for most of the working day.</b> This is the part of you that is not.</p>
+      <!-- 05 ORDER -->
+      <article class="entry rv">
+        <div class="entry-top">
+          <p class="label">05</p>
+          <p class="label">In build</p>
         </div>
-        <div class="feat-vis">
-          <div class="vis">
-            <div class="vis-bar"><span>Booking surface, structure only</span><span>placeholder</span></div>
-            <div class="vis-pad">
-              <svg class="figure" viewBox="0 0 520 260" role="img" aria-label="Diagram: a website frame with a booking column">
-                <rect x="0" y="0" width="520" height="230" rx="8" class="f-rule" fill="#FFFFFF"/>
-                <line class="f-rule" x1="0" y1="34" x2="520" y2="34"/>
-                <circle cx="18" cy="17" r="4" fill="#E3E6EB"/><circle cx="32" cy="17" r="4" fill="#E3E6EB"/><circle cx="46" cy="17" r="4" fill="#E3E6EB"/>
-                <rect x="66" y="10" width="150" height="14" rx="7" fill="#F2F4F8"/>
-                <text class="f-label" x="76" y="21">your name, your site</text>
-
-                <rect class="f-soft" x="22" y="58" width="200" height="16" rx="4"/>
-                <rect class="f-soft" x="22" y="84" width="272" height="10" rx="4"/>
-                <rect class="f-soft" x="22" y="102" width="240" height="10" rx="4"/>
-                <rect class="f-soft" x="22" y="134" width="120" height="62" rx="5"/>
-                <rect class="f-soft" x="154" y="134" width="120" height="62" rx="5"/>
-
-                <rect x="316" y="58" width="182" height="138" rx="6" fill="#F7F9FF"/>
-                <rect x="316" y="58" width="182" height="138" rx="6" class="f-rule" fill="none"/>
-                <text class="f-label on" x="330" y="80">BOOK A CONSULTATION</text>
-                <rect x="330" y="92" width="154" height="24" rx="4" fill="#FFFFFF" class="f-rule"/>
-                <rect x="330" y="122" width="154" height="24" rx="4" fill="#FFFFFF" class="f-rule"/>
-                <rect x="330" y="152" width="154" height="26" rx="13" fill="#1B4FE0"/>
-                <text class="f-label" x="368" y="169" fill="#FFFFFF">CONFIRM</text>
-
-                <text class="f-label" x="0" y="252">Structure only. Included on the top tier.</text>
-              </svg>
-            </div>
+        <h2 class="entry-name">Order</h2>
+        <p class="entry-line">Both meanings. Bookings taken, and a week that arranges itself.</p>
+        <div class="entry-grid">
+          <div>
+            <p class="body">A site under your own name, carrying your listings and your CEA registration number, taking consultations while you are standing in someone else's living room.</p>
+            <p class="body">You are unreachable for most of the working day. <b>This is the part of you that is not.</b> Bookings arrive in one place, and the week is arranged before you get back to your phone.</p>
           </div>
+          <ul class="spec plain">
+            <li><span class="t">A site under your name</span><p class="d">Your listings, your registration number, no vendor's logo on it.</p></li>
+            <li><span class="t">Consultations booked without you</span><p class="d">A calendar that keeps working through a viewing.</p></li>
+            <li><span class="t">One place for the day</span><p class="d">Enquiries and bookings in order rather than across four apps.</p></li>
+          </ul>
         </div>
       </article>
     </div>
@@ -771,58 +515,65 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
   <!-- ============ PRICING ============ -->
   <section class="sec" id="pricing">
     <div class="wrap">
-      <div class="rv">
-        <p class="kicker">Pricing</p>
-        <h2>Three tiers. No asterisks.</h2>
-        <p class="lede">Start free, move up when the volume justifies it. Tier names and prices are still being set, so they sit here as open slots.</p>
+      <div class="sec-head rv">
+        <div><p class="label">Pricing</p></div>
+        <div>
+          <h2>Three tiers. No asterisks.</h2>
+          <p class="body" style="margin-top:32px">Start free and move up when the volume justifies it. Names and prices for the upper two are still being set, so they sit here as open slots rather than as something invented.</p>
+        </div>
       </div>
 
       <div class="tiers rv">
         <div class="tier">
-          <h3 data-name-slot>Tier name pending</h3>
-          <p class="price">price slot: to be confirmed</p>
+          <p class="label">Tier 01</p>
+          <h3>Free</h3>
+          <p class="price">No card, no trial clock</p>
           <ul>
-            <li>Limited decks each month</li>
+            <li>Limited details each month</li>
             <li>All eight sections, fully sourced</li>
             <li>Sources and gaps included</li>
           </ul>
-          <a class="btn ghost" href="#waitlist">Get early access</a>
-        </div>
-        <div class="tier feature">
-          <h3 data-name-slot>Tier name pending</h3>
-          <p class="price">price slot: to be confirmed</p>
-          <ul>
-            <li>Unlimited decks</li>
-            <li>Tracked client links, limited volume</li>
-            <li>Room furnishing, limited volume</li>
-            <li>Daily news routed to your clients</li>
-          </ul>
-          <a class="btn" href="#waitlist">Get early access</a>
+          <a class="link-cta" href="#access">Get early access</a>
         </div>
         <div class="tier">
-          <h3 data-name-slot>Tier name pending</h3>
-          <p class="price">price slot: to be confirmed</p>
+          <p class="label">Tier 02</p>
+          <h3 data-slot>Name pending</h3>
+          <p class="price">Price pending</p>
           <ul>
-            <li>Everything in the middle tier</li>
-            <li>Unlimited tracked links</li>
-            <li>Unlimited room furnishing</li>
-            <li>Units in 3D</li>
-            <li>Your own site with booking</li>
+            <li>Unlimited details</li>
+            <li>Interest, limited volume</li>
+            <li>Vision, limited volume</li>
+            <li>Retention</li>
+          </ul>
+          <a class="link-cta" href="#access">Get early access</a>
+        </div>
+        <div class="tier">
+          <p class="label">Tier 03</p>
+          <h3 data-slot>Name pending</h3>
+          <p class="price">Price pending</p>
+          <ul>
+            <li>Everything in tier 02</li>
+            <li>Interest, unlimited</li>
+            <li>Vision, unlimited</li>
+            <li>Order, your own site</li>
             <li>Client database filtering</li>
           </ul>
-          <a class="btn ghost" href="#waitlist">Get early access</a>
+          <a class="link-cta" href="#access">Get early access</a>
         </div>
       </div>
-      <p class="disclaim">Tier names and prices are placeholders. Swap the values marked "price slot" and the tier name slots once they are set.</p>
     </div>
   </section>
 
-  <!-- ============ WAITLIST ============ -->
-  <section class="sec signup" id="waitlist">
+  <!-- ============ EARLY ACCESS ============ -->
+  <section class="sec close-sec" id="access">
     <div class="wrap">
-      <p class="kicker">Early access</p>
-      <h2>Get in before the next release.</h2>
-      <p class="lede">Tell us where you work and we will let you in as capacity opens, starting with agents who list often.</p>
+      <div class="sec-head">
+        <div><p class="label">Early access</p></div>
+        <div>
+          <h2>Get in before the next release.</h2>
+          <p class="body" style="margin-top:32px">Tell us where you work. We let people in as capacity opens, starting with agents who list often.</p>
+        </div>
+      </div>
 
       <form class="form" id="waitlistForm">
         <div class="field">
@@ -841,9 +592,11 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
           <label for="cea">CEA registration number</label>
           <input id="cea" name="cea" type="text" inputmode="latin">
         </div>
-        <button class="btn light" type="submit">Get early access</button>
+        <div class="form-foot">
+          <button class="submit" type="submit">Request access</button>
+          <p class="formnote" id="formnote">Not wired to a handler yet. Point it at your backend to start collecting.</p>
+        </div>
       </form>
-      <p class="formnote" id="formnote">This form is not wired to a handler yet. Point it at your backend or form service to start collecting.</p>
     </div>
   </section>
 
@@ -851,10 +604,10 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
 
 <footer>
   <div class="wrap foot">
-    <span>BASIS. Built in Singapore on government open data.</span>
+    <span>Basis. Singapore. Built on government open data.</span>
     <nav>
       <a href="mailto:hello@example.sg">hello@example.sg</a>
-      <a href="/privacy">Privacy policy</a>
+      <a href="/privacy">Privacy</a>
       <a href="/terms">Terms</a>
     </nav>
   </div>
@@ -864,20 +617,17 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* nav: dark over the banner, light once past it */
   var nav = document.getElementById('nav');
   var banner = document.querySelector('.banner');
   function paintNav(){
     var y = window.scrollY || window.pageYOffset;
-    var edge = banner.offsetHeight - 72;
-    nav.dataset.mode = y > edge ? 'light' : 'dark';
+    nav.dataset.mode = y > banner.offsetHeight - 80 ? 'light' : 'dark';
     nav.classList.toggle('stuck', y > 8);
   }
   paintNav();
   window.addEventListener('scroll', paintNav, {passive:true});
   window.addEventListener('resize', paintNav);
 
-  /* reveal on scroll */
   var items = document.querySelectorAll('.rv');
   if (reduce || !('IntersectionObserver' in window)) {
     items.forEach(function(el){ el.classList.add('in'); });
@@ -886,15 +636,14 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
       entries.forEach(function(e){
         if (e.isIntersecting) { e.target.classList.add('in'); rio.unobserve(e.target); }
       });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    }, {threshold:.08, rootMargin:'0px 0px -6% 0px'});
     items.forEach(function(el){ rio.observe(el); });
   }
 
-  /* tracked links session playback */
-  var panel = document.getElementById('panel');
-  var play  = document.getElementById('play');
+  var readout = document.getElementById('readout');
+  var play = document.getElementById('play');
   function run(){
-    panel.classList.add('played');
+    readout.classList.add('played');
     play.textContent = 'Session played';
     play.setAttribute('aria-disabled','true');
   }
@@ -905,8 +654,8 @@ footer{border-top:1px solid var(--rule);padding:40px 0 52px;font-size:.875rem;co
       entries.forEach(function(e){
         if (e.isIntersecting) { run(); io.disconnect(); }
       });
-    }, {threshold:.35});
-    io.observe(panel);
+    }, {threshold:.3});
+    io.observe(readout);
   }
 
   document.getElementById('waitlistForm').addEventListener('submit', function(e){
